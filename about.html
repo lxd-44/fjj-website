@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Francis Jiu Jitsu</title>
+    <meta name="description" content="Meet the team at Francis Jiu Jitsu. Learn about our story, philosophy, and the coaches who make FJJ Perth's most welcoming BJJ academy.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#1A1A1A',
+                        ember: '#EC6433',
+                        'ember-glow': '#FF7A4D',
+                        'ember-dark': '#D4552A',
+                        paper: '#FAF8F5',
+                        stone: '#E8E4DE',
+                        ash: '#9A9590',
+                        charcoal: '#2D2D2D',
+                    },
+                    fontFamily: {
+                        display: ['Outfit', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+
+        /* Ambient Background Effects */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .ambient-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(236, 100, 51, 0.08) 0%, transparent 60%);
+            animation: ambientFloat 20s ease-in-out infinite;
+        }
+        .ambient-glow::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(ellipse at center, rgba(236, 100, 51, 0.05) 0%, transparent 50%);
+            animation: ambientFloat 25s ease-in-out infinite reverse;
+        }
+        .light .ambient-glow::before { background: radial-gradient(ellipse at center, rgba(236, 100, 51, 0.06) 0%, transparent 60%); }
+        .light .ambient-glow::after { background: radial-gradient(ellipse at center, rgba(236, 100, 51, 0.04) 0%, transparent 50%); }
+
+        @keyframes ambientFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-3deg); }
+        }
+
+        .glass-nav {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .light .glass-nav {
+            background: rgba(250, 248, 245, 0.8);
+            border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(26, 26, 26, 0.08);
+        }
+
+        /* Shimmer effect on hover */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .texture-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(48px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.25s; }
+        .delay-300 { animation-delay: 0.4s; }
+
+        .mobile-menu {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .coach-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .coach-card:hover {
+            transform: translateY(-8px) scale(1.01);
+        }
+        .light .coach-card:hover {
+            box-shadow: 0 20px 50px rgba(236, 100, 51, 0.15);
+        }
+
+        /* Tag styling for light mode */
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .light .tag {
+            background: rgba(26, 26, 26, 0.05);
+            border: 1px solid rgba(26, 26, 26, 0.08);
+        }
+
+        /* Button shine effect */
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-shine:hover::before {
+            left: 100%;
+        }
+
+        /* Staggered card animations */
+        .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
+        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+        .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+        .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+        .animate-on-scroll:nth-child(6) { transition-delay: 0.5s; }
+    </style>
+</head>
+<body class="light bg-paper text-ink">
+
+    <!-- Ambient Background Glow -->
+    <div class="ambient-glow"></div>
+
+    <div class="min-h-screen flex flex-col relative z-10">
+
+        <!-- Navigation -->
+        <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 md:h-20">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="assets/fjj-logo-white.png" alt="Francis Jiu Jitsu" class="h-10 md:h-12 dark:block hidden">
+                        <img src="assets/fjj-logo-dark.png" alt="Francis Jiu Jitsu" class="h-10 md:h-12 dark:hidden block">
+                    </a>
+
+                    <div class="hidden lg:flex items-center gap-8">
+                        <a href="index.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">HOME</a>
+                        <a href="classes.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">CLASSES</a>
+                        <a href="schedule.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">SCHEDULE</a>
+                        <a href="about.html" class="nav-link font-display font-semibold text-sm tracking-wide text-ember">ABOUT</a>
+                        <a href="faq.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">FAQ</a>
+                        <a href="contact.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">CONTACT</a>
+                    </div>
+
+                    <div class="flex items-center gap-3 md:gap-4">
+                        <button id="theme-toggle" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors" aria-label="Toggle theme">
+                            <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                            </svg>
+                            <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                            </svg>
+                        </button>
+
+                        <a href="https://tidycal.com/fjj" target="_blank" rel="noopener"
+                           class="btn-shine hidden sm:inline-flex items-center gap-2 bg-ember hover:bg-ember-glow text-white font-display font-bold text-sm px-5 py-2.5 rounded-xl transition-all">
+                            BOOK FREE TRIAL
+                        </a>
+
+                        <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors" aria-label="Open menu">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 z-50 lg:hidden">
+            <div class="absolute inset-0 bg-ink/95 backdrop-blur-xl">
+                <div class="flex flex-col h-full p-6">
+                    <div class="flex justify-end">
+                        <button id="mobile-menu-close" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors" aria-label="Close menu">
+                            <svg class="w-6 h-6 text-paper" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <nav class="flex-1 flex flex-col items-center justify-center gap-8">
+                        <a href="index.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">HOME</a>
+                        <a href="classes.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">CLASSES</a>
+                        <a href="schedule.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">SCHEDULE</a>
+                        <a href="about.html" class="font-display font-black text-4xl text-ember">ABOUT</a>
+                        <a href="faq.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">FAQ</a>
+                        <a href="contact.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">CONTACT</a>
+                    </nav>
+                    <a href="https://tidycal.com/fjj" target="_blank" rel="noopener"
+                       class="flex items-center justify-center gap-3 bg-ember text-white font-display font-bold text-lg py-4 rounded-2xl">
+                        BOOK FREE TRIAL
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-1 pt-24 md:pt-28 pb-16 md:pb-24">
+
+            <!-- Page Header -->
+            <section class="relative texture-overlay py-12 md:py-20">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+                    <p class="font-display font-semibold text-xs tracking-[0.3em] uppercase text-ember mb-4 animate-fade-up">
+                        Our Story
+                    </p>
+                    <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.9] tracking-tight mb-6 animate-fade-up delay-100">
+                        ABOUT FJJ
+                    </h1>
+                    <p class="font-body text-lg md:text-xl text-ash max-w-2xl mx-auto animate-fade-up delay-200">
+                        More than a gym. More than training. A community built on respect, growth, and the pursuit of excellence.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Our Story -->
+            <section class="py-16 md:py-24">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+                        <div class="relative animate-on-scroll">
+                            <div class="aspect-[4/3] rounded-3xl overflow-hidden">
+                                <img src="https://sitefile.co/6528d5fa18c5c1e2a90e05a2/1736923688271_gi45.jpg"
+                                     alt="Training at Francis Jiu Jitsu"
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <!-- Floating accent -->
+                            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-ember/20 rounded-3xl -z-10"></div>
+                        </div>
+
+                        <div class="animate-on-scroll">
+                            <h2 class="font-display font-black text-3xl md:text-4xl mb-6">
+                                WHERE IT ALL BEGAN
+                            </h2>
+                            <div class="space-y-4 font-body text-ash leading-relaxed">
+                                <p>
+                                    Francis Jiu Jitsu was founded with a simple belief: everyone deserves a place to train, grow, and belong. No egos. No attitudes. Just people helping people get better.
+                                </p>
+                                <p>
+                                    Located in Leeming, Perth, we've built a community where first-timers train alongside competitors, where parents learn next to their kids, and where the journey matters as much as the destination.
+                                </p>
+                                <p>
+                                    Whether you're looking for fitness, self-defence, competition prep, or just a second family—you'll find it here.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values -->
+            <section class="py-16 md:py-24 border-t border-white/10 dark:border-white/5">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+                    <div class="text-center mb-16">
+                        <h2 class="font-display font-black text-3xl md:text-4xl mb-4">WHAT WE BELIEVE</h2>
+                        <p class="font-body text-lg text-ash max-w-2xl mx-auto">
+                            Our values shape everything we do—how we teach, how we train, how we treat each other.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <div class="glass-card rounded-3xl p-8 animate-on-scroll">
+                            <div class="w-14 h-14 bg-ember/20 rounded-2xl flex items-center justify-center mb-6">
+                                <svg class="w-7 h-7 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display font-bold text-xl mb-3">Community First</h3>
+                            <p class="font-body text-ash">
+                                We're a family. We celebrate each other's wins, support each other through struggles, and grow together.
+                            </p>
+                        </div>
+
+                        <div class="glass-card rounded-3xl p-8 animate-on-scroll">
+                            <div class="w-14 h-14 bg-ember/20 rounded-2xl flex items-center justify-center mb-6">
+                                <svg class="w-7 h-7 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display font-bold text-xl mb-3">Continuous Learning</h3>
+                            <p class="font-body text-ash">
+                                There's always more to learn. We approach every session with curiosity, whether it's your first day or your thousandth.
+                            </p>
+                        </div>
+
+                        <div class="glass-card rounded-3xl p-8 animate-on-scroll">
+                            <div class="w-14 h-14 bg-ember/20 rounded-2xl flex items-center justify-center mb-6">
+                                <svg class="w-7 h-7 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display font-bold text-xl mb-3">Respect & Safety</h3>
+                            <p class="font-body text-ash">
+                                We train hard, but we train smart. Every partner is treated with respect. Every session is safe for everyone.
+                            </p>
+                        </div>
+
+                        <div class="glass-card rounded-3xl p-8 animate-on-scroll">
+                            <div class="w-14 h-14 bg-ember/20 rounded-2xl flex items-center justify-center mb-6">
+                                <svg class="w-7 h-7 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display font-bold text-xl mb-3">Growth Mindset</h3>
+                            <p class="font-body text-ash">
+                                Failures are lessons. Challenges are opportunities. Every setback is a setup for a comeback.
+                            </p>
+                        </div>
+
+                        <div class="glass-card rounded-3xl p-8 animate-on-scroll">
+                            <div class="w-14 h-14 bg-ember/20 rounded-2xl flex items-center justify-center mb-6">
+                                <svg class="w-7 h-7 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display font-bold text-xl mb-3">Inclusivity</h3>
+                            <p class="font-body text-ash">
+                                Everyone belongs here. Regardless of age, gender, background, or experience—there's a place for you on our mats.
+                            </p>
+                        </div>
+
+                        <div class="glass-card rounded-3xl p-8 animate-on-scroll">
+                            <div class="w-14 h-14 bg-ember/20 rounded-2xl flex items-center justify-center mb-6">
+                                <svg class="w-7 h-7 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                                </svg>
+                            </div>
+                            <h3 class="font-display font-bold text-xl mb-3">Excellence</h3>
+                            <p class="font-body text-ash">
+                                We don't do average. We push each other to be better—better grapplers, better people, better versions of ourselves.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Meet the Team -->
+            <section class="py-16 md:py-24 border-t border-white/10 dark:border-white/5">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+                    <div class="text-center mb-16">
+                        <h2 class="font-display font-black text-3xl md:text-4xl mb-4">MEET YOUR COACHES</h2>
+                        <p class="font-body text-lg text-ash max-w-2xl mx-auto">
+                            Experienced, passionate, and dedicated to helping you reach your potential.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <!-- Coach 1 - Daan -->
+                        <div class="coach-card glass-card rounded-3xl overflow-hidden animate-on-scroll">
+                            <div class="relative h-72 overflow-hidden">
+                                <img src="https://sitefile.co/6528d5fa18c5c1e2a90e05a2/1739071039915_1-1.png"
+                                     alt="Daan Francis - Head Coach"
+                                     class="w-full h-full object-cover object-top">
+                                <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <span class="inline-block px-3 py-1 bg-ember rounded-lg font-display font-bold text-xs text-white mb-2">
+                                        HEAD COACH
+                                    </span>
+                                    <h3 class="font-display font-black text-2xl">DAAN FRANCIS</h3>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <p class="font-body text-ash mb-4">
+                                    Founder and head coach of FJJ. 10+ years of experience in Brazilian Jiu-Jitsu with a passion for building community and developing students at all levels.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tag px-3 py-1 rounded-full font-body text-xs text-ash">BJJ Black Belt</span>
+                                    <span class="tag px-3 py-1 rounded-full font-body text-xs text-ash">10+ Years</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coach 2 -->
+                        <div class="coach-card glass-card rounded-3xl overflow-hidden animate-on-scroll">
+                            <div class="relative h-72 overflow-hidden">
+                                <img src="https://sitefile.co/6528d5fa18c5c1e2a90e05a2/1736534585673_j1.png"
+                                     alt="Coach"
+                                     class="w-full h-full object-cover object-top">
+                                <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <span class="inline-block px-3 py-1 bg-pink-500 rounded-lg font-display font-bold text-xs text-white mb-2">
+                                        WOMEN'S COACH
+                                    </span>
+                                    <h3 class="font-display font-black text-2xl">WOMEN'S BJJ</h3>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <p class="font-body text-ash mb-4">
+                                    Dedicated to creating a supportive space for women in BJJ. Focus on technique, self-defence, and building confidence on the mats.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tag px-3 py-1 rounded-full font-body text-xs text-ash">Women's Program</span>
+                                    <span class="tag px-3 py-1 rounded-full font-body text-xs text-ash">Self-Defence</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coach 3 -->
+                        <div class="coach-card glass-card rounded-3xl overflow-hidden animate-on-scroll">
+                            <div class="relative h-72 overflow-hidden">
+                                <img src="https://sitefile.co/6528d5fa18c5c1e2a90e05a2/1739071052733_j2.png"
+                                     alt="Coach"
+                                     class="w-full h-full object-cover object-top">
+                                <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4">
+                                    <span class="inline-block px-3 py-1 bg-emerald-500 rounded-lg font-display font-bold text-xs text-white mb-2">
+                                        KIDS COACH
+                                    </span>
+                                    <h3 class="font-display font-black text-2xl">KIDS BJJ</h3>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <p class="font-body text-ash mb-4">
+                                    Making BJJ fun and engaging for kids. Building discipline, confidence, and coordination through age-appropriate training.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="tag px-3 py-1 rounded-full font-body text-xs text-ash">Kids Program</span>
+                                    <span class="tag px-3 py-1 rounded-full font-body text-xs text-ash">Ages 5-15</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Location -->
+            <section class="py-16 md:py-24 border-t border-white/10 dark:border-white/5">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+                        <div class="animate-on-scroll">
+                            <h2 class="font-display font-black text-3xl md:text-4xl mb-6">
+                                FIND US
+                            </h2>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-ember/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-display font-bold text-lg mb-1">Location</h3>
+                                        <p class="font-body text-ash">Leeming, Perth WA</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-ember/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-display font-bold text-lg mb-1">Training Hours</h3>
+                                        <p class="font-body text-ash">Mon-Fri: 4:30 PM - 8:30 PM</p>
+                                        <p class="font-body text-ash">Sat: 9:00 AM - 1:00 PM</p>
+                                        <p class="font-body text-ash">Sun: 10:00 AM - 12:00 PM</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-ember/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-6 h-6 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-display font-bold text-lg mb-1">Contact</h3>
+                                        <a href="mailto:info@francisjiujitsu.com.au" class="font-body text-ember hover:text-ember-glow transition-colors">info@francisjiujitsu.com.au</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8">
+                                <a href="contact.html" class="btn-shine inline-flex items-center gap-3 bg-ember hover:bg-ember-glow text-white font-display font-bold text-lg px-8 py-4 rounded-2xl transition-all">
+                                    GET IN TOUCH
+                                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="animate-on-scroll">
+                            <div class="glass-card rounded-3xl p-8 h-80 flex items-center justify-center">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 text-ash mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+                                    </svg>
+                                    <p class="font-display font-bold text-lg text-ash">Map Coming Soon</p>
+                                    <p class="font-body text-sm text-ash mt-2">Leeming, Perth WA</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="py-16 md:py-24">
+                <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+                    <div class="glass-card rounded-3xl p-8 md:p-12">
+                        <h2 class="font-display font-black text-3xl md:text-4xl mb-4">
+                            READY TO JOIN THE FAMILY?
+                        </h2>
+                        <p class="font-body text-lg text-ash mb-8">
+                            Your first class is free. No commitment, no pressure.
+                        </p>
+                        <a href="https://tidycal.com/fjj" target="_blank" rel="noopener"
+                           class="btn-shine inline-flex items-center gap-3 bg-ember hover:bg-ember-glow text-white font-display font-bold text-lg px-8 py-4 rounded-2xl transition-all">
+                            BOOK FREE TRIAL
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="relative bg-ink dark:bg-charcoal py-16 md:py-20">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid md:grid-cols-4 gap-12 md:gap-8 mb-12">
+                    <div class="md:col-span-1">
+                        <img src="assets/fjj-logo-white.png" alt="Francis Jiu Jitsu" class="h-12 mb-4">
+                        <p class="font-body text-stone text-sm leading-relaxed">
+                            Perth's most welcoming BJJ academy. All ages. All levels. Zero egos.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-paper mb-4">Quick Links</h4>
+                        <ul class="space-y-3">
+                            <li><a href="classes.html" class="font-body text-stone hover:text-ember transition-colors">Classes</a></li>
+                            <li><a href="schedule.html" class="font-body text-stone hover:text-ember transition-colors">Schedule</a></li>
+                            <li><a href="about.html" class="font-body text-stone hover:text-ember transition-colors">About</a></li>
+                            <li><a href="faq.html" class="font-body text-stone hover:text-ember transition-colors">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-paper mb-4">Contact</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-ember mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                                </svg>
+                                <span class="font-body text-stone text-sm">Leeming, Perth WA</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-ember mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                </svg>
+                                <a href="mailto:info@francisjiujitsu.com.au" class="font-body text-stone text-sm hover:text-ember transition-colors">info@francisjiujitsu.com.au</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-paper mb-4">Follow Us</h4>
+                        <div class="flex gap-4">
+                            <a href="https://www.instagram.com/francisjiujitsu/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-ember flex items-center justify-center transition-colors" aria-label="Instagram">
+                                <svg class="w-5 h-5 text-paper" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.facebook.com/francisjiujitsu/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-ember flex items-center justify-center transition-colors" aria-label="Facebook">
+                                <svg class="w-5 h-5 text-paper" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-8 border-t border-white/10">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <p class="font-body text-stone text-sm">© 2026 Francis Jiu Jitsu. All rights reserved.</p>
+                        <div class="flex items-center gap-6">
+                            <a href="#" class="font-body text-stone text-sm hover:text-ember transition-colors">Privacy Policy</a>
+                            <a href="#" class="font-body text-stone text-sm hover:text-ember transition-colors">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('fjj-theme') || 'light';
+        setTheme(savedTheme);
+
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark');
+                body.classList.remove('light');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+            }
+            localStorage.setItem('fjj-theme', theme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Scroll Animations
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animateElements.forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
