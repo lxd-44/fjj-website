@@ -1,0 +1,11 @@
+# Old multi-page URLs → single-page section anchors
+/about.html      /#about     301
+/about           /#about     301
+/classes.html    /#classes   301
+/classes         /#classes   301
+/schedule.html   /#schedule  301
+/schedule        /#schedule  301
+/faq.html        /#faq       301
+/faq             /#faq       301
+/contact.html    /#faq       301
+/contact         /#faq       301

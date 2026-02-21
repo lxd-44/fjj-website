@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francis Jiu Jitsu | BJJ Academy in Leeming, Perth</title>
-    <meta name="description" content="Learn Brazilian Jiu-Jitsu at Perth's most welcoming academy. Classes for all ages and levels. Book your free trial today.">
+    <title>Francis Jiu Jitsu — Perth's Most Welcoming BJJ Academy</title>
+    <meta name="description" content="Brazilian Jiu-Jitsu for all ages and levels. Kids, adults, gi, no-gi, women's classes. Free trial class in Leeming, Perth WA.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        ink: '#1A1A1A',
+                        ink: '#111111',
                         ember: '#EC6433',
-                        'ember-glow': '#FF7A4D',
-                        'ember-dark': '#D4552A',
-                        paper: '#FAF8F5',
-                        stone: '#E8E4DE',
-                        ash: '#9A9590',
-                        charcoal: '#2D2D2D',
+                        paper: '#FFFFFF',
+                        ash: '#666666',
+                        mist: '#F7F7F7',
                     },
                     fontFamily: {
-                        display: ['Outfit', 'sans-serif'],
-                        body: ['DM Sans', 'sans-serif'],
+                        clash: ['Sora', 'sans-serif'],
+                        space: ['Inter', 'sans-serif'],
                     },
                 }
             }
@@ -38,150 +34,201 @@
     </script>
 
     <style>
-        /* ═══════════════════════════════════════════════════════════
-           BASE STYLES
-           ═══════════════════════════════════════════════════════════ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #111111; }
 
-        * { transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+        .font-clash { font-family: 'Sora', sans-serif; }
 
-        /* ═══════════════════════════════════════════════════════════
-           GLASSMORPHISM
-           ═══════════════════════════════════════════════════════════ */
-
-        .glass-nav {
-            background: rgba(26, 26, 26, 0.7);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        /* Hero typography */
+        .hero-heading {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.75rem, 7vw, 5.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
         }
 
-        .light .glass-nav {
-            background: rgba(250, 248, 245, 0.8);
-            border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+        /* Section headings */
+        .section-heading {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .section-heading-sm {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
         }
 
-        .light .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+        /* Eyebrow text */
+        .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #EC6433;
         }
 
-        /* ═══════════════════════════════════════════════════════════
-           TEXTURE OVERLAY
-           ═══════════════════════════════════════════════════════════ */
+        /* Nav */
+        #nav { transition: background 0.4s cubic-bezier(.4,0,.2,1), border-color 0.4s cubic-bezier(.4,0,.2,1); }
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+        }
+        #nav.nav-scrolled a:not(.cta-btn) { color: rgba(17,17,17,0.5); }
+        #nav.nav-scrolled a:not(.cta-btn):hover { color: #111111; }
+        #nav.nav-scrolled #menuBtn { color: #111111; }
+        #nav.nav-scrolled .logo-white { opacity: 0; }
+        #nav.nav-scrolled .logo-dark { opacity: 1; }
+        .logo-dark { position: absolute; opacity: 0; transition: opacity 0.3s ease; }
+        .logo-white { transition: opacity 0.3s ease; }
 
-        .texture-overlay::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.02;
-            pointer-events: none;
-            mix-blend-mode: overlay;
+        /* Schedule tab active state */
+        .schedule-tab.active {
+            background: #111111;
+            color: #FFFFFF;
         }
 
-        /* ═══════════════════════════════════════════════════════════
-           ANIMATIONS
-           ═══════════════════════════════════════════════════════════ */
+        /* FAQ accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .faq-answer.open {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-icon { transition: transform 0.3s cubic-bezier(.4,0,.2,1); }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(48px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Card hover */
+        .class-card {
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1), box-shadow 0.4s cubic-bezier(.4,0,.2,1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .class-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(8px); }
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1);
         }
+        .mobile-menu.open { transform: translateX(0); }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(10px, -10px); }
-        }
-
-        .animate-fade-up {
-            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        /* Smooth reveal on scroll — spring easing */
+        .reveal {
             opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        .animate-bounce-slow {
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        .animate-float {
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.25s; }
-        .delay-300 { animation-delay: 0.4s; }
-        .delay-400 { animation-delay: 0.55s; }
-        .delay-500 { animation-delay: 0.7s; }
-
-        /* Scroll-triggered animations - enhanced with scale */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(60px) scale(0.98);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .animate-on-scroll.visible {
+        .reveal.visible {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
 
-        /* Staggered children */
-        .stagger-children > .animate-on-scroll:nth-child(1) { transition-delay: 0.1s; }
-        .stagger-children > .animate-on-scroll:nth-child(2) { transition-delay: 0.15s; }
-        .stagger-children > .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
-        .stagger-children > .animate-on-scroll:nth-child(4) { transition-delay: 0.25s; }
-        .stagger-children > .animate-on-scroll:nth-child(5) { transition-delay: 0.3s; }
-        .stagger-children > .animate-on-scroll:nth-child(6) { transition-delay: 0.35s; }
+        /* Staggered children reveals */
+        .stagger > .reveal:nth-child(1) { transition-delay: 0.05s; }
+        .stagger > .reveal:nth-child(2) { transition-delay: 0.12s; }
+        .stagger > .reveal:nth-child(3) { transition-delay: 0.19s; }
+        .stagger > .reveal:nth-child(4) { transition-delay: 0.26s; }
+        .stagger > .reveal:nth-child(5) { transition-delay: 0.33s; }
+        .stagger > .reveal:nth-child(6) { transition-delay: 0.40s; }
 
-        /* Enhanced glass card hover with glow */
-        .glass-card {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .glass-card:hover {
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.3),
-                0 0 0 1px rgba(236, 100, 51, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-        .light .glass-card:hover {
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.15),
-                0 0 0 1px rgba(236, 100, 51, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        /* Quote marks */
+        .quote-mark {
+            font-family: 'Sora', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #EC6433;
+            opacity: 0.15;
+            position: absolute;
+            top: -0.5rem;
+            left: -0.25rem;
+            user-select: none;
         }
 
-        /* ═══════════════════════════════════════════════════════════
-           MICRO-INTERACTIONS
-           ═══════════════════════════════════════════════════════════ */
+        /* Hero background layers */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            background: url('assets/images/tatami-flux-v2.jpg') center/cover no-repeat;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(17,17,17,0.55) 0%,
+                rgba(17,17,17,0.35) 35%,
+                rgba(17,17,17,0.4) 65%,
+                rgba(17,17,17,0.75) 100%
+            );
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 55%, rgba(236,100,51,0.1) 0%, transparent 50%);
+        }
 
-        .btn-primary {
+        /* Coach card image */
+        .coach-img { aspect-ratio: 3/4; object-fit: cover; }
+
+        /* CTA buttons — shine sweep + scale on active */
+        .cta-btn {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(236, 100, 51, 0.4);
-        }
-
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
-
-        .nav-link {
             position: relative;
+            overflow: hidden;
         }
+        .cta-btn:hover { transform: translateY(-2px) scale(1.02); }
+        .cta-btn:active { transform: scale(0.98); }
+        .cta-primary:hover { box-shadow: 0 12px 40px rgba(236, 100, 51, 0.35); }
+        .cta-ghost:hover { background: rgba(255,255,255,0.1); }
+        .cta-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+        .cta-primary:hover::after { left: 100%; }
 
+        /* Hero staggered entrance */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(48px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-stagger { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .hero-stagger:nth-child(1) { animation-delay: 0.2s; }
+        .hero-stagger:nth-child(2) { animation-delay: 0.4s; }
+        .hero-stagger:nth-child(3) { animation-delay: 0.6s; }
+        .hero-stagger:nth-child(4) { animation-delay: 0.8s; }
+
+        /* Nav link underline animation */
+        .nav-link { position: relative; }
         .nav-link::after {
             content: '';
             position: absolute;
@@ -190,103 +237,24 @@
             width: 0;
             height: 2px;
             background: currentColor;
-            transition: width 0.3s ease;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        .nav-link:hover::after { width: 100%; }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           MOBILE MENU
-           ═══════════════════════════════════════════════════════════ */
-
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           ACETERNITY UI EFFECTS (Adapted for Vanilla JS)
-           ═══════════════════════════════════════════════════════════ */
-
-        /* --- SPOTLIGHT EFFECT --- */
-        @keyframes spotlight {
-            0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
-            100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
-        }
-
-        .spotlight {
-            position: absolute;
-            width: 560px;
-            height: 800px;
-            background: radial-gradient(ellipse at center, rgba(236,100,51,0.2) 0%, rgba(236,100,51,0.05) 40%, transparent 70%);
-            animation: spotlight 2s ease 0.5s forwards;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .light .spotlight {
-            background: radial-gradient(ellipse at center, rgba(236,100,51,0.15) 0%, rgba(236,100,51,0.03) 40%, transparent 70%);
-        }
-
-        /* --- TEXT GENERATE EFFECT --- */
-        @keyframes wordReveal {
-            0% { opacity: 0; filter: blur(10px); transform: translateY(10px); }
-            100% { opacity: 1; filter: blur(0); transform: translateY(0); }
-        }
-
-        .text-generate span {
-            display: inline-block;
-            opacity: 0;
-            animation: wordReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        /* --- FLIP WORDS --- */
-        @keyframes flipIn {
-            0% { opacity: 0; transform: translateY(20px) rotateX(-90deg); filter: blur(8px); }
-            100% { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
-        }
-
-        @keyframes flipOut {
-            0% { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); }
-            100% { opacity: 0; transform: translateY(-20px) rotateX(90deg); filter: blur(8px); }
-        }
-
-        .flip-words {
-            display: inline-block;
-            perspective: 1000px;
-        }
-
-        .flip-words.flip-in {
-            animation: flipIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .flip-words.flip-out {
-            animation: flipOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        /* --- GLARE CARD EFFECT --- */
+        /* Glare card — radial light follows cursor */
         .glare-card {
-            position: relative;
-            overflow: hidden;
             --glare-x: 50%;
             --glare-y: 50%;
+            position: relative;
         }
-
         .glare-card::after {
             content: '';
             position: absolute;
             inset: 0;
             background: radial-gradient(
-                600px circle at var(--glare-x) var(--glare-y),
-                rgba(255, 255, 255, 0.15) 0%,
-                rgba(255, 255, 255, 0.05) 25%,
+                500px circle at var(--glare-x) var(--glare-y),
+                rgba(236, 100, 51, 0.08) 0%,
+                rgba(255,255,255, 0.04) 25%,
                 transparent 50%
             );
             opacity: 0;
@@ -295,1762 +263,875 @@
             z-index: 10;
             border-radius: inherit;
         }
+        .glare-card:hover::after { opacity: 1; }
 
-        .glare-card:hover::after {
-            opacity: 1;
-        }
-
-        .light .glare-card::after {
-            background: radial-gradient(
-                600px circle at var(--glare-x) var(--glare-y),
-                rgba(236, 100, 51, 0.1) 0%,
-                rgba(236, 100, 51, 0.03) 25%,
-                transparent 50%
-            );
-        }
-
-        /* --- 3D TILT CARD --- */
-        .tilt-card {
-            transform-style: preserve-3d;
-            transition: transform 0.15s ease-out;
-        }
-
-        .tilt-card:hover {
-            transform: perspective(1000px) rotateY(var(--tilt-x, 0deg)) rotateX(var(--tilt-y, 0deg));
-        }
-
-        .tilt-card > * {
-            transform: translateZ(20px);
-        }
-
-        /* --- AURORA BACKGROUND --- */
-        @keyframes aurora {
-            0% { background-position: 50% 50%, 50% 50%; }
-            50% { background-position: 150% 50%, 150% 50%; }
-            100% { background-position: 350% 50%, 350% 50%; }
-        }
-
-        .aurora-bg {
-            position: absolute;
-            inset: 0;
-            background-image:
-                repeating-linear-gradient(100deg, rgba(236,100,51,0.3) 10%, transparent 15%, transparent 20%, rgba(236,100,51,0.2) 25%, transparent 30%),
-                repeating-linear-gradient(100deg, rgba(26,26,26,0.8) 0%, rgba(26,26,26,0.9) 7%, transparent 10%, transparent 12%, rgba(26,26,26,0.8) 16%);
-            background-size: 300% 200%, 200% 100%;
-            filter: blur(80px) saturate(150%);
-            opacity: 0.4;
-            animation: aurora 30s linear infinite;
-            pointer-events: none;
-        }
-
-        .light .aurora-bg {
-            background-image:
-                repeating-linear-gradient(100deg, rgba(236,100,51,0.2) 10%, transparent 15%, transparent 20%, rgba(236,100,51,0.15) 25%, transparent 30%),
-                repeating-linear-gradient(100deg, rgba(250,248,245,0.9) 0%, rgba(250,248,245,0.95) 7%, transparent 10%, transparent 12%, rgba(250,248,245,0.9) 16%);
-            opacity: 0.5;
-        }
-
-        /* --- SHIMMER LINE --- */
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .shimmer-line {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(236,100,51,0.5), transparent);
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           PREMIUM ACETERNITY EFFECTS (v4 Upgrade)
-           ═══════════════════════════════════════════════════════════ */
-
-        /* --- CSS PROPERTY FOR MOVING BORDER --- */
-        @property --border-angle {
-            syntax: '<angle>';
-            initial-value: 0deg;
-            inherits: false;
-        }
-
-        /* --- MULTI-LAYER GRADIENT ANIMATIONS --- */
-        @keyframes moveVertical {
-            0%, 100% { transform: translateY(-30%); }
-            50% { transform: translateY(30%); }
-        }
-
-        @keyframes moveInCircle {
-            0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-            100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
-        }
-
-        @keyframes moveHorizontal {
-            0%, 100% { transform: translateX(-30%) translateY(-10%); }
-            50% { transform: translateX(30%) translateY(10%); }
-        }
-
-        .gradient-layer {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            pointer-events: none;
-            will-change: transform;
-        }
-
-        .gradient-layer-1 {
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(236,100,51,0.25) 0%, transparent 70%);
-            top: -400px;
-            left: 20%;
-            animation: moveVertical 25s ease-in-out infinite;
-        }
-
-        .gradient-layer-2 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255,122,77,0.2) 0%, transparent 70%);
-            top: 50%;
-            right: -200px;
-            animation: moveInCircle 35s linear infinite;
-        }
-
-        .gradient-layer-3 {
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(236,100,51,0.15) 0%, transparent 70%);
-            bottom: -300px;
-            left: -200px;
-            animation: moveHorizontal 30s ease-in-out infinite;
-        }
-
-        .light .gradient-layer-1 { background: radial-gradient(circle, rgba(236,100,51,0.15) 0%, transparent 70%); }
-        .light .gradient-layer-2 { background: radial-gradient(circle, rgba(255,122,77,0.12) 0%, transparent 70%); }
-        .light .gradient-layer-3 { background: radial-gradient(circle, rgba(236,100,51,0.1) 0%, transparent 70%); }
-
-        /* --- SVG BEAM ANIMATIONS --- */
-        @keyframes beamFlow {
-            0% { stroke-dashoffset: 2000; opacity: 0; }
-            5% { opacity: 0.8; }
-            50% { stroke-dashoffset: 0; opacity: 0.8; }
-            95% { opacity: 0.8; }
-            100% { stroke-dashoffset: -2000; opacity: 0; }
-        }
-
-        .beam-svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .beam-path {
-            stroke-dasharray: 2000;
-            stroke-dashoffset: 2000;
-            animation: beamFlow 12s ease-in-out infinite;
-            will-change: stroke-dashoffset, opacity;
-        }
-
-        .beam-path-1 { animation-delay: 0s; }
-        .beam-path-2 { animation-delay: 3s; }
-        .beam-path-3 { animation-delay: 6s; }
-        .beam-path-4 { animation-delay: 9s; }
-
-        /* --- ENHANCED MULTI-LAYER SPOTLIGHT --- */
-        .spotlight-container {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .spotlight-layer {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            will-change: transform, opacity;
-        }
-
-        @keyframes pulseSlow {
-            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
-            50% { opacity: 0.9; transform: translateX(-50%) scale(1.15); }
-        }
-
-        @keyframes drift {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(40px, -30px); }
-            50% { transform: translate(-30px, 40px); }
-            75% { transform: translate(30px, 30px); }
-        }
-
-        .spotlight-1 {
-            width: 700px;
-            height: 700px;
-            background: rgba(236,100,51,0.3);
-            top: -350px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: pulseSlow 10s ease-in-out infinite;
-        }
-
-        .spotlight-2 {
-            width: 500px;
-            height: 500px;
-            background: rgba(255,122,77,0.2);
-            top: 20%;
-            right: -150px;
-            animation: drift 15s ease-in-out infinite;
-        }
-
-        .spotlight-3 {
-            width: 600px;
-            height: 600px;
-            background: rgba(236,100,51,0.15);
-            bottom: -200px;
-            left: -150px;
-            animation: drift 20s ease-in-out infinite reverse;
-        }
-
-        .light .spotlight-1 { background: rgba(236,100,51,0.2); }
-        .light .spotlight-2 { background: rgba(255,122,77,0.12); }
-        .light .spotlight-3 { background: rgba(236,100,51,0.1); }
-
-        /* --- MOVING BORDER BUTTON --- */
-        .moving-border-btn {
-            position: relative;
-            isolation: isolate;
-            overflow: hidden;
-        }
-
-        .moving-border-btn::before {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            border-radius: inherit;
-            background: conic-gradient(
-                from var(--border-angle),
-                transparent 0%,
-                transparent 25%,
-                #EC6433 35%,
-                #FF7A4D 50%,
-                #EC6433 65%,
-                transparent 75%,
-                transparent 100%
-            );
-            animation: rotateBorder 4s linear infinite;
-            z-index: -2;
-        }
-
-        .moving-border-btn::after {
-            content: '';
-            position: absolute;
-            inset: 3px;
-            border-radius: inherit;
-            background: #EC6433;
-            z-index: -1;
-        }
-
-        @keyframes rotateBorder {
-            to { --border-angle: 360deg; }
-        }
-
-        /* --- CSS SPARKLES --- */
-        @keyframes sparkle {
-            0%, 100% {
-                opacity: 0;
-                transform: scale(0) translateY(0);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1) translateY(-15px);
-            }
-        }
-
-        .sparkle-container {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: #EC6433;
-            border-radius: 50%;
-            box-shadow:
-                0 0 10px 3px rgba(236,100,51,0.6),
-                0 0 20px 6px rgba(236,100,51,0.3);
-            animation: sparkle 2.5s ease-in-out infinite;
-        }
-
-        .sparkle:nth-child(1) { left: 5%; top: 15%; animation-delay: 0s; }
-        .sparkle:nth-child(2) { left: 15%; top: 75%; animation-delay: 0.3s; }
-        .sparkle:nth-child(3) { left: 30%; top: 25%; animation-delay: 0.6s; }
-        .sparkle:nth-child(4) { left: 45%; top: 85%; animation-delay: 0.9s; }
-        .sparkle:nth-child(5) { left: 60%; top: 20%; animation-delay: 1.2s; }
-        .sparkle:nth-child(6) { left: 75%; top: 70%; animation-delay: 1.5s; }
-        .sparkle:nth-child(7) { left: 85%; top: 35%; animation-delay: 1.8s; }
-        .sparkle:nth-child(8) { left: 95%; top: 60%; animation-delay: 2.1s; }
-
-        .light .sparkle {
-            box-shadow:
-                0 0 8px 2px rgba(236,100,51,0.5),
-                0 0 15px 4px rgba(236,100,51,0.2);
-        }
-
-        /* --- HERO TEXT HIGHLIGHT --- */
-        @keyframes highlightDraw {
-            0% { transform: scaleX(0); }
-            100% { transform: scaleX(1); }
-        }
-
-        .text-highlight {
-            position: relative;
-            display: inline-block;
-        }
-
-        .text-highlight::before {
-            content: '';
-            position: absolute;
-            bottom: 0%;
-            left: 0%;
-            width: 100%;
-            height: 8%;
-            background: linear-gradient(90deg, rgba(236,100,51,0.3) 0%, rgba(255,122,77,0.25) 50%, rgba(236,100,51,0.3) 100%);
-            transform: scaleX(0);
-            transform-origin: left;
-            animation: highlightDraw 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
-            z-index: -1;
-            border-radius: 2px;
-        }
-
-        .light .text-highlight::before {
-            background: linear-gradient(90deg, rgba(236,100,51,0.15) 0%, rgba(255,122,77,0.1) 50%, rgba(236,100,51,0.15) 100%);
-        }
-
-        /* --- GPU ACCELERATION HINTS --- */
-        .gpu-accelerated {
-            will-change: transform, opacity;
-            transform: translateZ(0);
-            backface-visibility: hidden;
-        }
-
-        /* --- ACCESSIBILITY: REDUCED MOTION --- */
-        @media (prefers-reduced-motion: reduce) {
-            .beam-path,
-            .spotlight-layer,
-            .gradient-layer,
-            .sparkle,
-            .aurora-bg,
-            .spotlight,
-            .flip-words,
-            .text-generate span,
-            .moving-border-btn::before,
-            .text-highlight::before {
-                animation: none !important;
-            }
-
-            .glare-card::after,
-            .tilt-card {
-                transition: none !important;
-            }
-
-            .text-generate span {
-                opacity: 1 !important;
-                filter: none !important;
-            }
-
-            .text-highlight::before {
-                transform: scaleX(1) !important;
-            }
-        }
-
-        /* --- TOUCH DEVICE FALLBACKS --- */
-        .touch-device .glare-card::after {
-            display: none;
-        }
-
-        .touch-device .tilt-card:hover {
-            transform: none !important;
-        }
-
-        /* ═══════════════════════════════════════════════════════════
-           PREMIUM ENHANCEMENTS (v5 Upgrade)
-           ═══════════════════════════════════════════════════════════ */
-
-        /* --- ANIMATED NUMBER COUNTER --- */
-        .counter-value {
-            display: inline-block;
-            font-variant-numeric: tabular-nums;
-        }
-
-
-        /* --- BREATHING STATS ANIMATION --- */
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .stats-breathe {
-            animation: breathe 4s ease-in-out infinite;
-        }
-
-        /* --- CTA BUTTON SHINE EFFECT --- */
-        .btn-shine {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-shine::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.25),
-                transparent
-            );
-            transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .btn-shine:hover::after {
-            left: 100%;
-        }
-
-        /* --- BENEFIT ICONS HOVER --- */
-        .benefit-icon {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .benefit-icon:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(236, 100, 51, 0.3);
-        }
-
-        /* --- IMAGE REVEAL ON SCROLL --- */
+        /* Image clip-path reveal */
         .image-reveal {
             clip-path: inset(0 100% 0 0);
             transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .image-reveal.visible {
             clip-path: inset(0 0 0 0);
         }
 
-        /* --- ENHANCED FAQ ACCORDION --- */
-        .faq-toggle[aria-expanded="true"] .faq-icon {
-            transform: rotate(45deg) scale(1.1);
+        /* Hero scroll indicator */
+        .scroll-indicator {
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 0.4; }
+            50% { transform: translateY(8px); opacity: 0.8; }
         }
 
-        /* ═══════════════════════════════════════════════════════════
-           DOT BACKGROUND PATTERN (Aceternity-inspired)
-           ═══════════════════════════════════════════════════════════ */
+        /* Mobile menu stagger */
+        .mobile-menu .mobile-link {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open .mobile-link {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .mobile-menu.open .mobile-link:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-menu.open .mobile-link:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-menu.open .mobile-link:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-menu.open .mobile-link:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-menu.open .mobile-link:nth-child(5) { transition-delay: 0.3s; }
+        .mobile-menu.open .mobile-link:nth-child(6) { transition-delay: 0.35s; }
 
-        .dot-background {
-            position: absolute;
-            inset: 0;
-            background-size: 24px 24px;
-            background-image: radial-gradient(rgba(154, 149, 144, 0.4) 1px, transparent 1px);
-            z-index: 2;
+        /* Reduced motion — accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-stagger, .reveal, .image-reveal,
+            .scroll-indicator, .mobile-menu .mobile-link {
+                animation: none !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                clip-path: none !important;
+            }
+            .cta-primary::after { display: none; }
+            .glare-card::after { display: none; }
         }
 
-        .dark .dot-background {
-            background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
-        }
-
-        /* Radial fade mask for vignette effect */
-        .dot-background-mask {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, transparent 20%, var(--bg-color, #FAF8F5) 70%);
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        .dark .dot-background-mask {
-            --bg-color: #1A1A1A;
-        }
+        /* Touch device — disable hover effects */
+        .touch-device .glare-card::after { display: none; }
+        .touch-device .class-card:hover { transform: none; }
     </style>
 </head>
+<body>
 
-<body class="light">
-    <div id="app" class="min-h-screen bg-paper dark:bg-ink font-body text-ink dark:text-paper antialiased">
+<!-- ============================================ -->
+<!-- NAV -->
+<!-- ============================================ -->
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#hero" class="flex-shrink-0 relative">
+            <img src="assets/fjj-logo-white.png" alt="Francis Jiu Jitsu" class="logo-white h-10 lg:h-12 w-auto">
+            <img src="assets/fjj-logo-dark.png" alt="Francis Jiu Jitsu" class="logo-dark h-10 lg:h-12 w-auto">
+        </a>
 
-        <!-- ═══════════════════════════════════════════════════════════
-             NAVIGATION
-             ═══════════════════════════════════════════════════════════ -->
+        <!-- Desktop Nav -->
+        <div class="hidden lg:flex items-center gap-10">
+            <a href="#classes" class="nav-link text-sm font-space font-medium text-white/60 hover:text-white transition">Classes</a>
+            <a href="#schedule" class="nav-link text-sm font-space font-medium text-white/60 hover:text-white transition">Schedule</a>
+            <a href="#about" class="nav-link text-sm font-space font-medium text-white/60 hover:text-white transition">About</a>
+            <a href="#coaches" class="nav-link text-sm font-space font-medium text-white/60 hover:text-white transition">Coaches</a>
+            <a href="#faq" class="nav-link text-sm font-space font-medium text-white/60 hover:text-white transition">FAQ</a>
+            <a href="https://tidycal.com/fjj" target="_blank" rel="noopener" class="cta-btn cta-primary bg-ember text-white font-space font-semibold text-sm px-6 py-3 rounded-full">Start Free Trial</a>
+        </div>
 
-        <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Mobile Hamburger -->
+        <button id="menuBtn" class="lg:hidden text-white p-2" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/>
+            </svg>
+        </button>
+    </div>
 
-                    <!-- Logo -->
-                    <a href="/" class="flex items-center gap-3">
-                        <img src="assets/fjj-logo-white.png" alt="Francis Jiu Jitsu" class="h-10 md:h-12 dark:block hidden">
-                        <img src="assets/fjj-logo-dark.png" alt="Francis Jiu Jitsu" class="h-10 md:h-12 dark:hidden block">
-                    </a>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-ink z-50 flex flex-col">
+        <div class="flex items-center justify-between px-6 h-20">
+            <img src="assets/fjj-logo-white.png" alt="Francis Jiu Jitsu" class="h-10 w-auto">
+            <button id="closeMenu" class="text-paper p-2" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center flex-1 gap-8">
+            <a href="#classes" class="mobile-link font-clash text-4xl font-bold text-paper">Classes</a>
+            <a href="#schedule" class="mobile-link font-clash text-4xl font-bold text-paper">Schedule</a>
+            <a href="#about" class="mobile-link font-clash text-4xl font-bold text-paper">About</a>
+            <a href="#coaches" class="mobile-link font-clash text-4xl font-bold text-paper">Coaches</a>
+            <a href="#faq" class="mobile-link font-clash text-4xl font-bold text-paper">FAQ</a>
+            <a href="https://tidycal.com/fjj" target="_blank" rel="noopener" class="cta-btn bg-ember text-white font-space font-semibold text-lg px-8 py-4 rounded-full mt-4">Start Free Trial</a>
+        </div>
+    </div>
+</nav>
 
-                    <!-- Desktop Nav -->
-                    <div class="hidden lg:flex items-center gap-8">
-                        <a href="/" class="nav-link font-display font-semibold text-sm tracking-wide text-ember">HOME</a>
-                        <a href="classes.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">CLASSES</a>
-                        <a href="schedule.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">SCHEDULE</a>
-                        <a href="about.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">ABOUT</a>
-                        <a href="faq.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">FAQ</a>
-                        <a href="contact.html" class="nav-link font-display font-semibold text-sm tracking-wide hover:text-ember transition-colors">CONTACT</a>
+<!-- ============================================ -->
+<!-- S1: HERO -->
+<!-- ============================================ -->
+<section id="hero" class="bg-ink min-h-screen flex items-center relative overflow-hidden">
+    <!-- Background: tatami texture with zen circles baked in -->
+    <div class="hero-bg"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-24 lg:pt-0 lg:pb-0 w-full relative z-10">
+        <p class="hero-stagger eyebrow text-ember mb-8">Mind like water, heart like stone</p>
+        <h1 class="hero-stagger hero-heading text-white max-w-5xl">
+            Your journey<br>
+            starts on<br>
+            the mats
+        </h1>
+        <p class="hero-stagger text-base lg:text-lg text-white/50 font-space mt-8 max-w-lg leading-relaxed">
+            Learn to move, find your strength, and discover your potential with Perth's most welcoming BJJ community.
+        </p>
+        <div class="hero-stagger flex flex-col sm:flex-row gap-4 mt-12">
+            <a href="https://tidycal.com/fjj" target="_blank" rel="noopener" class="cta-btn cta-primary bg-ember text-white font-space font-semibold text-sm px-8 py-4 rounded-full text-center">
+                Start Free Trial
+            </a>
+            <a href="#classes" class="cta-btn cta-ghost border border-white/20 text-white font-space font-medium text-sm px-8 py-4 rounded-full text-center">
+                Explore Classes
+            </a>
+        </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 scroll-indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white/40">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+        </svg>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- S2: WHAT IS BJJ -->
+<!-- ============================================ -->
+<section id="bjj" class="bg-white py-28 lg:py-44 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="reveal">
+            <p class="eyebrow mb-6">Warrior spirit, gentle soul</p>
+            <h2 class="section-heading text-ink max-w-5xl">
+                The Gentle Art
+            </h2>
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 mt-16">
+                <div>
+                    <p class="text-lg lg:text-xl text-ink/70 font-space leading-relaxed">
+                        Brazilian Jiu-Jitsu is the art of control and submission. Learn to use leverage and technique to overcome size and strength. No punching, no kicking &mdash; just problem-solving with your body.
+                    </p>
+                </div>
+                <div class="space-y-8">
+                    <div class="border-l-4 border-ember pl-6">
+                        <h3 class="font-clash font-bold text-xl text-ink">No Strength Required</h3>
+                        <p class="text-ash font-space mt-1">Technique beats power. Every time.</p>
                     </div>
-
-                    <!-- Right side: Theme toggle + CTA + Mobile menu -->
-                    <div class="flex items-center gap-3 md:gap-4">
-
-                        <!-- Theme Toggle -->
-                        <button id="theme-toggle" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 dark:hover:bg-white/10 transition-colors" aria-label="Toggle theme">
-                            <!-- Sun (shown in dark mode) -->
-                            <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                            </svg>
-                            <!-- Moon (shown in light mode) -->
-                            <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-                            </svg>
-                        </button>
-
-                        <!-- CTA Button -->
-                        <a href="https://tidycal.com/fjj" target="_blank" rel="noopener"
-                           class="btn-primary hidden sm:inline-flex items-center gap-2 bg-ember hover:bg-ember-glow text-white font-display font-bold text-sm px-5 py-2.5 rounded-xl">
-                            BOOK FREE TRIAL
-                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                        </a>
-
-                        <!-- Mobile Menu Button -->
-                        <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors" aria-label="Open menu">
-                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                        </button>
+                    <div class="border-l-4 border-ember pl-6">
+                        <h3 class="font-clash font-bold text-xl text-ink">No Experience Needed</h3>
+                        <p class="text-ash font-space mt-1">Everyone starts as a beginner. We teach you everything from scratch.</p>
+                    </div>
+                    <div class="border-l-4 border-ember pl-6">
+                        <h3 class="font-clash font-bold text-xl text-ink">Just Show Up</h3>
+                        <p class="text-ash font-space mt-1">That's the hardest part. We'll handle the rest.</p>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </div>
+</section>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="mobile-menu fixed inset-0 z-50 lg:hidden">
-            <div class="absolute inset-0 bg-ink/95 backdrop-blur-xl">
-                <div class="flex flex-col h-full p-6">
+<!-- ============================================ -->
+<!-- S3: CLASSES -->
+<!-- ============================================ -->
+<section id="classes" class="bg-mist py-28 lg:py-44">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="reveal">
+            <p class="eyebrow mb-6">Iron sharpens iron</p>
+            <h2 class="section-heading text-ink max-w-4xl">
+                Find Your Class
+            </h2>
+        </div>
 
-                    <!-- Close button -->
-                    <div class="flex justify-end">
-                        <button id="mobile-menu-close" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors" aria-label="Close menu">
-                            <svg class="w-6 h-6 text-paper" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 stagger">
+            <!-- GI BJJ -->
+            <div class="class-card glare-card reveal group relative rounded-2xl overflow-hidden bg-white">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="assets/images/gi-training.webp" alt="Gi BJJ Training" width="1200" height="900" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <h3 class="font-clash font-bold text-2xl text-ink">Gi BJJ</h3>
+                        <span class="bg-ember text-white text-xs font-bold px-2 py-1 rounded-full">POPULAR</span>
                     </div>
+                    <p class="text-ash font-space text-sm leading-relaxed">Traditional Brazilian Jiu-Jitsu in the gi. Master grips, sweeps, and submissions using the kimono.</p>
+                    <p class="text-ember font-space text-sm font-medium mt-3">All Levels &middot; 60-90 min</p>
+                </div>
+            </div>
 
-                    <!-- Mobile Nav Links -->
-                    <nav class="flex-1 flex flex-col items-center justify-center gap-8">
-                        <a href="/" class="font-display font-black text-4xl text-ember">HOME</a>
-                        <a href="classes.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">CLASSES</a>
-                        <a href="schedule.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">SCHEDULE</a>
-                        <a href="about.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">ABOUT</a>
-                        <a href="faq.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">FAQ</a>
-                        <a href="contact.html" class="font-display font-black text-4xl text-paper hover:text-ember transition-colors">CONTACT</a>
-                    </nav>
+            <!-- NO-GI -->
+            <div class="class-card glare-card reveal group relative rounded-2xl overflow-hidden bg-white">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="assets/images/nogi-training.webp" alt="No-Gi Training" width="1200" height="900" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-clash font-bold text-2xl text-ink mb-3">No-Gi</h3>
+                    <p class="text-ash font-space text-sm leading-relaxed">Fast-paced grappling without the gi. Wrestling-based techniques, leg locks, and athletic movement.</p>
+                    <p class="text-ember font-space text-sm font-medium mt-3">All Levels &middot; 60 min</p>
+                </div>
+            </div>
 
-                    <!-- Mobile CTA -->
-                    <a href="https://tidycal.com/fjj" target="_blank" rel="noopener"
-                       class="btn-primary flex items-center justify-center gap-3 bg-ember text-white font-display font-bold text-lg py-4 rounded-2xl">
-                        BOOK FREE TRIAL
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </a>
+            <!-- KIDS -->
+            <div class="class-card glare-card reveal group relative rounded-2xl overflow-hidden bg-white">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="assets/images/kids-training.webp" alt="Kids BJJ Training" width="1200" height="900" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-clash font-bold text-2xl text-ink mb-3">Kids BJJ</h3>
+                    <p class="text-ash font-space text-sm leading-relaxed">Fun, structured classes for ages 3-15. Build confidence, discipline, and coordination through play.</p>
+                    <p class="text-ember font-space text-sm font-medium mt-3">Ages 3-15 &middot; 45-60 min</p>
+                </div>
+            </div>
+
+            <!-- WOMEN'S -->
+            <div class="class-card glare-card reveal group relative rounded-2xl overflow-hidden bg-white">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="assets/images/womens-training.webp" alt="Women's BJJ Training" width="1200" height="900" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-clash font-bold text-2xl text-ink mb-3">Women's Only</h3>
+                    <p class="text-ash font-space text-sm leading-relaxed">A supportive space for women to learn BJJ, build strength, and develop self-defence skills at their own pace.</p>
+                    <p class="text-ember font-space text-sm font-medium mt-3">Women Only &middot; 60 min</p>
+                </div>
+            </div>
+
+            <!-- JUDO & BOXING -->
+            <div class="class-card glare-card reveal group relative rounded-2xl overflow-hidden bg-white">
+                <div class="aspect-[4/3] bg-mist flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-20 h-20 text-ink/10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"/>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-clash font-bold text-2xl text-ink mb-3">Judo & Boxing</h3>
+                    <p class="text-ash font-space text-sm leading-relaxed">Stand-up skills: throws, takedowns, and striking fundamentals. Complete your martial arts toolkit.</p>
+                    <p class="text-ember font-space text-sm font-medium mt-3">All Levels &middot; 60 min</p>
+                </div>
+            </div>
+
+            <!-- PRIVATE -->
+            <div class="class-card glare-card reveal group relative rounded-2xl overflow-hidden bg-white">
+                <div class="aspect-[4/3] bg-mist flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-20 h-20 text-ink/10">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
+                    </svg>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-clash font-bold text-2xl text-ink mb-3">Private 1:1</h3>
+                    <p class="text-ash font-space text-sm leading-relaxed">Personalised coaching focused on your goals. Accelerate your progress with dedicated mat time.</p>
+                    <p class="text-ember font-space text-sm font-medium mt-3">By Appointment</p>
                 </div>
             </div>
         </div>
 
-        <!-- ═══════════════════════════════════════════════════════════
-             HERO SECTION
-             ═══════════════════════════════════════════════════════════ -->
+        <div class="text-center mt-16 reveal">
+            <a href="https://tidycal.com/fjj" target="_blank" rel="noopener" class="cta-btn cta-primary bg-ember text-white font-space font-semibold text-sm px-8 py-4 rounded-full inline-block">
+                Book Your Free Trial
+            </a>
+        </div>
+    </div>
+</section>
 
-        <section class="relative min-h-screen flex items-center justify-center overflow-hidden texture-overlay">
+<!-- ============================================ -->
+<!-- S4: SCHEDULE -->
+<!-- ============================================ -->
+<section id="schedule" class="bg-white py-28 lg:py-44">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="reveal">
+            <p class="eyebrow mb-6">Every day is day one</p>
+            <h2 class="section-heading text-ink">
+                Weekly Schedule
+            </h2>
+        </div>
 
-            <!-- Background Image with Gradient Overlay -->
-            <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1564415315949-7a0c4c73aab4?w=1920&q=80"
-                     alt=""
-                     class="w-full h-full object-cover opacity-20 dark:opacity-15">
-                <div class="absolute inset-0 bg-gradient-to-b from-paper/80 via-paper/60 to-paper dark:from-ink/80 dark:via-ink/60 dark:to-ink"></div>
-            </div>
+        <!-- Day Tabs -->
+        <div class="flex flex-wrap gap-2 mt-12 reveal" id="scheduleTabs"></div>
 
-            <!-- PREMIUM MULTI-LAYER GRADIENT ANIMATION -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
-                <div class="gradient-layer gradient-layer-1 gpu-accelerated"></div>
-                <div class="gradient-layer gradient-layer-2 gpu-accelerated"></div>
-                <div class="gradient-layer gradient-layer-3 gpu-accelerated"></div>
-            </div>
+        <!-- Schedule Content -->
+        <div id="scheduleContent" class="mt-8 reveal"></div>
 
-            <!-- PREMIUM 3-LAYER SPOTLIGHT SYSTEM -->
-            <div class="spotlight-container">
-                <div class="spotlight-layer spotlight-1 gpu-accelerated"></div>
-                <div class="spotlight-layer spotlight-2 gpu-accelerated"></div>
-                <div class="spotlight-layer spotlight-3 gpu-accelerated"></div>
-            </div>
+        <p class="text-ash font-space text-sm mt-8 reveal">
+            J1 = Ages 3-7 &nbsp;&middot;&nbsp; J2 = Ages 8-15 &nbsp;&middot;&nbsp; NG = No-Gi &nbsp;&middot;&nbsp; GI = Traditional &nbsp;&middot;&nbsp; WW = Women's Wrestling &nbsp;&middot;&nbsp; BOX = Boxing
+        </p>
+    </div>
+</section>
 
-            <!-- DOT BACKGROUND PATTERN (Aceternity-inspired) -->
-            <div class="dot-background"></div>
-            <div class="dot-background-mask"></div>
+<!-- ============================================ -->
+<!-- S5: ABOUT / STORY -->
+<!-- ============================================ -->
+<section id="about" class="bg-mist py-28 lg:py-44">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="reveal">
+            <p class="eyebrow mb-6">More than a gym</p>
+            <h2 class="section-heading text-ink max-w-5xl">
+                Built on<br>
+                Honest Growth
+            </h2>
+        </div>
 
-            <!-- Floating Stats Badges (Desktop) -->
-            <div class="absolute bottom-24 right-8 lg:bottom-32 lg:right-16 z-20 hidden md:flex flex-col gap-4 animate-fade-up delay-500 stats-breathe">
-                <div class="glass-card px-5 py-3 rounded-2xl">
-                    <p class="font-display font-black text-2xl lg:text-3xl text-ember counter-value" data-target="500">0+</p>
-                    <p class="font-body text-xs lg:text-sm text-ash">Members Trained</p>
-                </div>
-                <div class="glass-card px-5 py-3 rounded-2xl">
-                    <p class="font-display font-black text-2xl lg:text-3xl text-ember counter-value" data-target="10">0+</p>
-                    <p class="font-body text-xs lg:text-sm text-ash">Years Teaching</p>
-                </div>
-            </div>
-
-            <!-- Content -->
-            <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24 pb-16">
-
-                <!-- Eyebrow -->
-                <p class="font-display font-semibold text-xs md:text-sm tracking-[0.3em] uppercase text-ember mb-6 animate-fade-up">
-                    BJJ Academy in Leeming, Perth
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 mt-16">
+            <div class="reveal">
+                <p class="text-lg lg:text-xl text-ink/70 font-space leading-relaxed">
+                    Francis Jiu Jitsu was built on one belief: everyone deserves a place to train, grow, and belong. No egos. No shortcuts. Just honest work on the mats.
                 </p>
-
-                <!-- Main Headline - UX-Optimized Brutalist -->
-                <h1 class="font-display font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-[7rem] leading-[0.85] tracking-[-0.04em] mb-8">
-                    <span class="block animate-fade-up delay-100">YOUR JOURNEY</span>
-                    <span class="block animate-fade-up delay-200">STARTS ON</span>
-                    <span class="block text-ember animate-fade-up delay-300 text-highlight">THE MATS</span>
-                </h1>
-
-                <!-- Subheadline - Text Generate Effect -->
-                <p class="text-generate font-body text-lg md:text-xl lg:text-2xl text-ash dark:text-stone max-w-2xl mx-auto mb-10">
-                    <span>Learn</span> <span>to</span> <span class="flip-words text-ember font-semibold" data-words='["move", "fight", "grow", "transform"]'>move</span><span>,</span> <span>and</span> <span>find</span> <span>your</span> <span>strength</span> <span>with</span> <span>Perth's</span> <span>most</span> <span>welcoming</span> <span>BJJ</span> <span>community.</span>
+                <p class="text-base text-ash font-space leading-relaxed mt-6">
+                    Located in Leeming, Perth, we bring together first-timers, competitors, parents, and children in a community built on respect and personal development. Whether you're here to get fit, learn self-defence, or find something deeper &mdash; you belong here.
                 </p>
-
-                <!-- Mobile Stats (visible on mobile only) -->
-                <div class="flex md:hidden justify-center gap-4 mb-8 animate-fade-up delay-400">
-                    <div class="glass-card px-4 py-2 rounded-xl text-center">
-                        <p class="font-display font-black text-xl text-ember counter-value" data-target="500">0+</p>
-                        <p class="font-body text-[10px] text-ash">Trained</p>
+            </div>
+            <div class="space-y-6 reveal">
+                <div class="flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded-full bg-ember/10 flex items-center justify-center flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-ember">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/>
+                        </svg>
                     </div>
-                    <div class="glass-card px-4 py-2 rounded-xl text-center">
-                        <p class="font-display font-black text-xl text-ember counter-value" data-target="10">0+</p>
-                        <p class="font-body text-[10px] text-ash">Years</p>
+                    <div>
+                        <h3 class="font-clash font-bold text-lg text-ink">Community First</h3>
+                        <p class="text-ash font-space text-sm mt-1">Members are family. We celebrate wins and carry each other through the hard rounds.</p>
                     </div>
                 </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded-full bg-ember/10 flex items-center justify-center flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-ember">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-clash font-bold text-lg text-ink">Continuous Learning</h3>
+                        <p class="text-ash font-space text-sm mt-1">White belt curiosity at every level. There's always something new on the mats.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded-full bg-ember/10 flex items-center justify-center flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-ember">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-clash font-bold text-lg text-ink">Respect & Safety</h3>
+                        <p class="text-ash font-space text-sm mt-1">Train hard, train smart. Intensity balanced with care &mdash; every session.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded-full bg-ember/10 flex items-center justify-center flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-ember">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-clash font-bold text-lg text-ink">Inclusivity</h3>
+                        <p class="text-ash font-space text-sm mt-1">All ages. All levels. All backgrounds. Zero egos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up delay-500">
-                    <a href="https://tidycal.com/fjj" target="_blank" rel="noopener"
-                       class="moving-border-btn btn-primary btn-shine inline-flex items-center gap-3 bg-ember hover:bg-ember-glow text-white font-display font-bold text-lg px-8 py-4 rounded-2xl">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-                        </svg>
-                        BOOK FREE TRIAL
-                    </a>
-                    <a href="schedule.html"
-                       class="inline-flex items-center gap-2 font-display font-semibold text-lg px-6 py-4 rounded-2xl border-2 border-current hover:bg-ink hover:text-paper dark:hover:bg-paper dark:hover:text-ink transition-all">
-                        VIEW SCHEDULE
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </a>
+<!-- ============================================ -->
+<!-- S6: COACHES -->
+<!-- ============================================ -->
+<section id="coaches" class="bg-white py-28 lg:py-44">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="reveal">
+            <p class="eyebrow mb-6">The people behind the mats</p>
+            <h2 class="section-heading text-ink">
+                Your Coaches
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-16 stagger">
+            <!-- Daan -->
+            <div class="reveal">
+                <div class="rounded-2xl overflow-hidden image-reveal">
+                    <img src="assets/images/coach-daan.webp" alt="Daan Francis - Head Coach" width="600" height="800" loading="lazy" class="coach-img w-full">
+                </div>
+                <h3 class="font-clash font-bold text-2xl text-ink mt-6">Daan Francis</h3>
+                <p class="text-ash font-clash font-medium text-sm mt-1">Head Coach & Founder</p>
+                <p class="text-ash font-space text-sm leading-relaxed mt-3">
+                    BJJ Black Belt with 10+ years on the mats. Daan built FJJ on the belief that everyone deserves a welcoming place to learn &mdash; no egos, no shortcuts, just honest growth.
+                </p>
+            </div>
+
+            <!-- Women's Coach -->
+            <div class="reveal">
+                <div class="rounded-2xl overflow-hidden image-reveal">
+                    <img src="assets/images/coach-womens.webp" alt="Women's BJJ Coach" width="600" height="800" loading="lazy" class="coach-img w-full">
+                </div>
+                <h3 class="font-clash font-bold text-2xl text-ink mt-6">Women's Program</h3>
+                <p class="text-ash font-clash font-medium text-sm mt-1">Coach & Mentor</p>
+                <p class="text-ash font-space text-sm leading-relaxed mt-3">
+                    Creating a supportive environment where women can train, compete, and build confidence. Competitor and mentor dedicated to growing women's BJJ in Perth.
+                </p>
+            </div>
+
+            <!-- Kids Coach -->
+            <div class="reveal">
+                <div class="rounded-2xl overflow-hidden image-reveal">
+                    <img src="assets/images/coach-kids.webp" alt="Kids Program Coach" width="600" height="800" loading="lazy" class="coach-img w-full">
+                </div>
+                <h3 class="font-clash font-bold text-2xl text-ink mt-6">Kids Program</h3>
+                <p class="text-ash font-clash font-medium text-sm mt-1">Junior Coach</p>
+                <p class="text-ash font-space text-sm leading-relaxed mt-3">
+                    Making BJJ fun and engaging for kids aged 3-15. Building discipline, coordination, and confidence through playful, structured training.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- S7: BENEFITS -->
+<!-- ============================================ -->
+<section id="benefits" class="bg-mist py-28 lg:py-44">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="reveal">
+            <p class="eyebrow mb-6">More than training</p>
+            <h2 class="section-heading text-ink">
+                What You Gain
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 mt-16 stagger">
+            <div class="reveal">
+                <h3 class="section-heading-sm text-ink">Fitness</h3>
+                <p class="text-ash font-space text-lg leading-relaxed mt-4">
+                    Build real, functional strength. Full-body conditioning that translates to everyday life.
+                </p>
+            </div>
+            <div class="reveal">
+                <h3 class="section-heading-sm text-ink">Focus</h3>
+                <p class="text-ash font-space text-lg leading-relaxed mt-4">
+                    Sharpen your mind. Every roll is a puzzle that demands complete presence.
+                </p>
+            </div>
+            <div class="reveal">
+                <h3 class="section-heading-sm text-ink">Wellness</h3>
+                <p class="text-ash font-space text-lg leading-relaxed mt-4">
+                    Leave stress on the mats. Training is therapy &mdash; a healthy outlet for whatever you're carrying.
+                </p>
+            </div>
+            <div class="reveal">
+                <h3 class="section-heading-sm text-ink">Mindfulness</h3>
+                <p class="text-ash font-space text-lg leading-relaxed mt-4">
+                    Moving meditation. When you're rolling, there's no room for anything but the present moment.
+                </p>
+            </div>
+            <div class="reveal">
+                <h3 class="section-heading-sm text-ink">Discipline</h3>
+                <p class="text-ash font-space text-lg leading-relaxed mt-4">
+                    The belt system gives you clear goals and celebrates progress. Structured growth, visible results.
+                </p>
+            </div>
+            <div class="reveal">
+                <h3 class="section-heading-sm text-ink">Community</h3>
+                <p class="text-ash font-space text-lg leading-relaxed mt-4">
+                    Your second family. Train with people who become lifelong friends and hold you accountable.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!-- S8: TESTIMONIALS -->
+<!-- ============================================ -->
+<section id="testimonials" class="bg-white py-28 lg:py-44">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="reveal">
+            <p class="eyebrow mb-6">From the community</p>
+            <h2 class="section-heading text-ink">
+                Real Stories
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-16 stagger">
+            <div class="reveal relative pt-16">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="text-ink/70 font-space text-lg leading-relaxed">
+                    FJJ has been transformative. The stress relief and mental clarity I get from training is incredible. It's the best hour of my day.
+                </p>
+                <div class="mt-6">
+                    <p class="font-clash font-bold text-ink">Nic G.</p>
+                    <p class="text-ash font-space text-sm">Member since 2023</p>
                 </div>
             </div>
 
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-slow">
-                <svg class="w-6 h-6 text-ash" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             SECTION 2: WHAT IS BJJ?
-             ═══════════════════════════════════════════════════════════ -->
-
-        <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden">
-
-            <!-- Subtle ambient glow -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <div class="absolute top-1/4 right-0 w-[400px] h-[400px] bg-ember/10 dark:bg-ember/5 rounded-full blur-[100px] translate-x-1/2"></div>
+            <div class="reveal relative pt-16">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="text-ink/70 font-space text-lg leading-relaxed">
+                    I was nervous to start but everyone here is so welcoming. My daughter loves the kids' classes and I've found my own thing too.
+                </p>
+                <div class="mt-6">
+                    <p class="font-clash font-bold text-ink">Sarah M.</p>
+                    <p class="text-ash font-space text-sm">Parent & Member</p>
+                </div>
             </div>
 
-            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="reveal relative pt-16">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="text-ink/70 font-space text-lg leading-relaxed">
+                    Best decision I ever made. Lost 15kg, made lifelong friends, and finally found a workout I actually look forward to.
+                </p>
+                <div class="mt-6">
+                    <p class="font-clash font-bold text-ink">James T.</p>
+                    <p class="text-ash font-space text-sm">Member since 2022</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+<!-- ============================================ -->
+<!-- S9: FAQ -->
+<!-- ============================================ -->
+<section id="faq" class="bg-mist py-28 lg:py-44">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+        <div class="reveal">
+            <p class="eyebrow mb-6">Common questions</p>
+            <h2 class="section-heading text-ink">
+                FAQ
+            </h2>
+        </div>
 
-                    <!-- Image Side -->
-                    <div class="relative animate-on-scroll">
-                        <!-- Glass Frame -->
-                        <div class="glass-card rounded-3xl p-3 md:p-4">
-                            <!-- Image placeholder - replace with actual photo -->
-                            <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-charcoal to-ink dark:from-stone dark:to-paper overflow-hidden image-reveal">
-                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1000&q=80"
-                                     alt="BJJ training at Francis Jiu Jitsu"
-                                     class="w-full h-full object-cover">
-                            </div>
-                        </div>
+        <div class="mt-16 space-y-0 reveal" id="faqList">
+            <div class="faq-item border-t border-ink/10 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center py-6">
+                    <h3 class="font-clash font-bold text-lg lg:text-xl text-ink pr-8">Do I need any experience to start?</h3>
+                    <span class="faq-icon text-ink text-2xl font-light flex-shrink-0">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-ash font-space text-base leading-relaxed pb-2">
+                        Absolutely not. Most members started with zero experience. We teach you everything from scratch. Your first class is free &mdash; just show up in comfortable clothes and we'll handle the rest.
+                    </p>
+                </div>
+            </div>
 
-                        <!-- Decorative badge -->
-                        <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 glass-card rounded-2xl px-4 py-3 md:px-6 md:py-4">
-                            <p class="font-display font-black text-2xl md:text-3xl text-ember">10+</p>
-                            <p class="font-body text-xs md:text-sm text-ash">Years Teaching</p>
-                        </div>
-                    </div>
+            <div class="faq-item border-t border-ink/10 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center py-6">
+                    <h3 class="font-clash font-bold text-lg lg:text-xl text-ink pr-8">What should I wear to my first class?</h3>
+                    <span class="faq-icon text-ink text-2xl font-light flex-shrink-0">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-ash font-space text-base leading-relaxed pb-2">
+                        Comfortable athletic wear &mdash; shorts or leggings and a t-shirt. We have loaner gis if you want to try. Avoid anything with zippers or pockets that could catch.
+                    </p>
+                </div>
+            </div>
 
-                    <!-- Text Side -->
-                    <div class="animate-on-scroll">
-                        <!-- Section label -->
-                        <p class="font-display font-semibold text-xs tracking-[0.3em] uppercase text-ember mb-4">
-                            The Gentle Art
-                        </p>
+            <div class="faq-item border-t border-ink/10 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center py-6">
+                    <h3 class="font-clash font-bold text-lg lg:text-xl text-ink pr-8">How often should I train?</h3>
+                    <span class="faq-icon text-ink text-2xl font-light flex-shrink-0">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-ash font-space text-base leading-relaxed pb-2">
+                        For beginners, 2-3 times per week is the sweet spot. Enough to build skill without burning out. Once you're hooked, many members train 4-5 times per week.
+                    </p>
+                </div>
+            </div>
 
-                        <!-- Headline - Brutalist stacked -->
-                        <h2 class="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tight mb-6">
-                            BRAZILIAN<br>
-                            <span class="text-ember">JIU-JITSU</span>
-                        </h2>
+            <div class="faq-item border-t border-ink/10 cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center py-6">
+                    <h3 class="font-clash font-bold text-lg lg:text-xl text-ink pr-8">Is BJJ safe? Will I get hurt?</h3>
+                    <span class="faq-icon text-ink text-2xl font-light flex-shrink-0">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-ash font-space text-base leading-relaxed pb-2">
+                        BJJ is one of the safest martial arts to train. There's no striking, and the tap system means you control the intensity. Tap early, tap often &mdash; that's how everyone trains smart.
+                    </p>
+                </div>
+            </div>
 
-                        <!-- Description -->
-                        <p class="font-body text-lg md:text-xl text-ash dark:text-stone leading-relaxed mb-8">
-                            The art of control and submission. Learn to use leverage and technique to overcome size and strength—building confidence that carries into every part of your life.
-                        </p>
+            <div class="faq-item border-t border-ink/10 border-b cursor-pointer" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center py-6">
+                    <h3 class="font-clash font-bold text-lg lg:text-xl text-ink pr-8">What ages do you teach?</h3>
+                    <span class="faq-icon text-ink text-2xl font-light flex-shrink-0">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-ash font-space text-base leading-relaxed pb-2">
+                        Kids from age 3, teens, and adults of all ages. We have dedicated juniors classes (J1: ages 3-7, J2: ages 8-15) and adult classes for all levels.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                        <!-- Key points - minimal, zen -->
-                        <ul class="space-y-4 mb-10">
-                            <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-xl bg-ember/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-5 h-5 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-display font-bold text-base md:text-lg">No Strength Required</p>
-                                    <p class="font-body text-sm text-ash">Technique beats power. Every time.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-xl bg-ember/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-5 h-5 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-display font-bold text-base md:text-lg">No Experience Needed</p>
-                                    <p class="font-body text-sm text-ash">Everyone starts as a beginner. We'll teach you everything.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <div class="w-10 h-10 rounded-xl bg-ember/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-5 h-5 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="font-display font-bold text-base md:text-lg">Just Show Up</p>
-                                    <p class="font-body text-sm text-ash">That's the hardest part. We've got everything else covered.</p>
-                                </div>
-                            </li>
-                        </ul>
+<!-- ============================================ -->
+<!-- S10: CTA + FOOTER -->
+<!-- ============================================ -->
+<section class="bg-ink py-28 lg:py-44">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+        <div class="reveal">
+            <p class="eyebrow text-ember mb-6">Your first class is free</p>
+            <h2 class="section-heading text-white">
+                Ready to Begin?
+            </h2>
+            <p class="text-base text-white/50 font-space mt-8 max-w-xl mx-auto leading-relaxed">
+                Your first class is free. No commitment. No pressure. Just show up, give it a try, and see what the mats can do for you.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+                <a href="https://tidycal.com/fjj" target="_blank" rel="noopener" class="cta-btn cta-primary bg-ember text-white font-space font-semibold text-sm px-8 py-4 rounded-full text-center">
+                    Book Free Trial
+                </a>
+                <a href="mailto:info@francisjiujitsu.com.au" class="cta-btn cta-ghost border border-white/20 text-white font-space font-medium text-sm px-8 py-4 rounded-full text-center">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-                        <!-- CTA -->
-                        <a href="about.html"
-                           class="inline-flex items-center gap-2 font-display font-semibold text-ember hover:text-ember-glow transition-colors">
-                            Learn more about our academy
-                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
+<footer class="bg-ink py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-12">
+            <!-- Brand -->
+            <div class="md:col-span-2">
+                <img src="assets/fjj-logo-white.png" alt="Francis Jiu Jitsu" class="h-10 w-auto mb-6">
+                <p class="text-paper/40 font-space text-sm leading-relaxed max-w-sm">
+                    Perth's most welcoming BJJ academy. All ages. All levels. Zero egos. Located in Leeming, Perth WA.
+                </p>
+            </div>
+
+            <!-- Links -->
+            <div>
+                <h4 class="font-clash font-bold text-sm text-paper mb-4">Quick Links</h4>
+                <div class="space-y-2">
+                    <a href="#classes" class="block text-paper/40 font-space text-sm hover:text-paper transition">Classes</a>
+                    <a href="#schedule" class="block text-paper/40 font-space text-sm hover:text-paper transition">Schedule</a>
+                    <a href="#about" class="block text-paper/40 font-space text-sm hover:text-paper transition">About</a>
+                    <a href="#coaches" class="block text-paper/40 font-space text-sm hover:text-paper transition">Coaches</a>
+                    <a href="#faq" class="block text-paper/40 font-space text-sm hover:text-paper transition">FAQ</a>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-clash font-bold text-sm text-paper mb-4">Contact</h4>
+                <div class="space-y-2">
+                    <p class="text-paper/40 font-space text-sm">Leeming, Perth WA</p>
+                    <a href="mailto:info@francisjiujitsu.com.au" class="block text-paper/40 font-space text-sm hover:text-paper transition">info@francisjiujitsu.com.au</a>
+                    <div class="flex gap-4 mt-4">
+                        <a href="https://www.instagram.com/francisjiujitsu/" target="_blank" rel="noopener" aria-label="Instagram" class="text-paper/40 hover:text-ember transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/francisjiujitsu/" target="_blank" rel="noopener" aria-label="Facebook" class="text-paper/40 hover:text-ember transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                         </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ═══════════════════════════════════════════════════════════
-             SECTION 3: CLASS TYPES
-             ═══════════════════════════════════════════════════════════ -->
-
-        <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-ink/5 dark:bg-white/[0.02]">
-
-            <!-- Ambient glow -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-ember/10 dark:bg-ember/5 rounded-full blur-[120px]"></div>
+        <div class="border-t border-paper/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p class="text-paper/30 font-space text-xs">&copy; 2026 Francis Jiu Jitsu. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="text-paper/30 font-space text-xs hover:text-paper/50 transition">Privacy Policy</a>
+                <a href="#" class="text-paper/30 font-space text-xs hover:text-paper/50 transition">Terms of Service</a>
             </div>
-
-            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
-                <!-- Section Header -->
-                <div class="text-center mb-16 md:mb-20 animate-on-scroll">
-                    <p class="font-display font-semibold text-xs tracking-[0.3em] uppercase text-ember mb-4">
-                        Programs for Everyone
-                    </p>
-                    <h2 class="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tight">
-                        FIND YOUR<br>
-                        <span class="text-ember">CLASS</span>
-                    </h2>
-                </div>
-
-                <!-- Class Cards Grid - Image-based with featured card -->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
-
-                    <!-- GI BJJ - Featured Card (larger) -->
-                    <div class="glass-card glare-card rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group animate-on-scroll sm:col-span-2 lg:col-span-1 lg:row-span-2">
-                        <div class="relative h-48 sm:h-64 lg:h-full lg:min-h-[400px] overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=800&q=80"
-                                 alt="GI BJJ training"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                                <p class="font-display font-semibold text-xs text-ember tracking-wide mb-2">MOST POPULAR</p>
-                                <h3 class="font-display font-black text-2xl md:text-3xl text-paper mb-3">GI BJJ</h3>
-                                <p class="font-body text-stone text-sm md:text-base leading-relaxed mb-4 max-w-sm">
-                                    Traditional BJJ with the kimono. Learn grips, chokes, and submissions that use the gi to your advantage.
-                                </p>
-                                <p class="font-display font-semibold text-xs text-ember tracking-wide">ALL LEVELS WELCOME</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- NO-GI -->
-                    <div class="glass-card glare-card rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group animate-on-scroll">
-                        <div class="relative h-48 sm:h-56 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1577998474517-7eeeed4e448a?w=800&q=80"
-                                 alt="No-Gi grappling"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-6">
-                                <h3 class="font-display font-bold text-xl md:text-2xl text-paper mb-2">NO-GI</h3>
-                                <p class="font-body text-stone text-sm leading-relaxed mb-2">
-                                    Fast-paced grappling. Wrestling-based techniques for MMA.
-                                </p>
-                                <p class="font-display font-semibold text-xs text-ember tracking-wide">ALL LEVELS</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PRIVATE TRAINING -->
-                    <div class="glass-card glare-card rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group animate-on-scroll">
-                        <div class="relative h-48 sm:h-56 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
-                                 alt="Private training session"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-6">
-                                <h3 class="font-display font-bold text-xl md:text-2xl text-paper mb-2">PRIVATE 1:1</h3>
-                                <p class="font-body text-stone text-sm leading-relaxed mb-2">
-                                    Personalised coaching focused on your goals.
-                                </p>
-                                <p class="font-display font-semibold text-xs text-ember tracking-wide">BY APPOINTMENT</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- KIDS -->
-                    <div class="glass-card glare-card rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group animate-on-scroll">
-                        <div class="relative h-48 sm:h-56 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1611672585731-fa10603fb9e0?w=800&q=80"
-                                 alt="Kids BJJ class"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-6">
-                                <h3 class="font-display font-bold text-xl md:text-2xl text-paper mb-2">KIDS BJJ</h3>
-                                <p class="font-body text-stone text-sm leading-relaxed mb-2">
-                                    Fun, structured classes. Build confidence and discipline.
-                                </p>
-                                <p class="font-display font-semibold text-xs text-ember tracking-wide">AGES 3-15</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- WOMEN'S ONLY -->
-                    <div class="glass-card glare-card rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group animate-on-scroll">
-                        <div class="relative h-48 sm:h-56 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=800&q=80"
-                                 alt="Women's BJJ training"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-6">
-                                <h3 class="font-display font-bold text-xl md:text-2xl text-paper mb-2">WOMEN'S ONLY</h3>
-                                <p class="font-body text-stone text-sm leading-relaxed mb-2">
-                                    Supportive environment to train and build strength.
-                                </p>
-                                <p class="font-display font-semibold text-xs text-ember tracking-wide">ALL LEVELS</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- JUDO & BOXING -->
-                    <div class="glass-card glare-card rounded-3xl overflow-hidden hover:-translate-y-2 transition-all duration-500 group animate-on-scroll">
-                        <div class="relative h-48 sm:h-56 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&q=80"
-                                 alt="Judo and Boxing training"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent"></div>
-                            <div class="absolute bottom-0 left-0 right-0 p-6">
-                                <h3 class="font-display font-bold text-xl md:text-2xl text-paper mb-2">JUDO & BOXING</h3>
-                                <p class="font-body text-stone text-sm leading-relaxed mb-2">
-                                    Stand-up skills: throws, takedowns, striking.
-                                </p>
-                                <p class="font-display font-semibold text-xs text-ember tracking-wide">ALL LEVELS</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- View Schedule CTA -->
-                <div class="text-center mt-12 md:mt-16">
-                    <a href="schedule.html"
-                       class="btn-primary inline-flex items-center gap-3 bg-ember hover:bg-ember-glow text-white font-display font-bold text-base md:text-lg px-8 py-4 rounded-2xl">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-                        </svg>
-                        VIEW FULL SCHEDULE
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             SECTION 4: BENEFITS
-             ═══════════════════════════════════════════════════════════ -->
-
-        <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden">
-
-            <!-- Ambient glow -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <div class="absolute top-1/2 left-0 w-[600px] h-[600px] bg-ember/10 dark:bg-ember/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2"></div>
-                <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-ember/8 dark:bg-ember/4 rounded-full blur-[100px]"></div>
-            </div>
-
-            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
-                <!-- Section Header -->
-                <div class="text-center mb-16 md:mb-24 animate-on-scroll">
-                    <p class="font-display font-semibold text-xs tracking-[0.3em] uppercase text-ember mb-4">
-                        Transform Your Life
-                    </p>
-                    <h2 class="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tight">
-                        MORE THAN<br>
-                        <span class="text-ember">TRAINING</span>
-                    </h2>
-                </div>
-
-                <!-- Benefits Grid - Zen spacing with larger icons -->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 lg:gap-20 stagger-children">
-
-                    <!-- Fitness -->
-                    <div class="text-center animate-on-scroll">
-                        <div class="benefit-icon w-20 h-20 md:w-24 md:h-24 mx-auto rounded-3xl bg-ember/10 flex items-center justify-center mb-8">
-                            <!-- Fire icon (Fitness) -->
-                            <svg class="w-10 h-10 md:w-12 md:h-12 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-black text-2xl md:text-3xl mb-4">FITNESS</h3>
-                        <p class="font-body text-ash dark:text-stone text-base md:text-lg leading-relaxed">
-                            Build real, functional strength. Full-body conditioning that translates to everyday life.
-                        </p>
-                    </div>
-
-                    <!-- Focus -->
-                    <div class="text-center animate-on-scroll">
-                        <div class="benefit-icon w-20 h-20 md:w-24 md:h-24 mx-auto rounded-3xl bg-ember/10 flex items-center justify-center mb-8">
-                            <!-- Eye icon (Focus) -->
-                            <svg class="w-10 h-10 md:w-12 md:h-12 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-black text-2xl md:text-3xl mb-4">FOCUS</h3>
-                        <p class="font-body text-ash dark:text-stone text-base md:text-lg leading-relaxed">
-                            Sharpen your mind. Every roll is a puzzle that demands complete presence and quick thinking.
-                        </p>
-                    </div>
-
-                    <!-- Wellness -->
-                    <div class="text-center animate-on-scroll">
-                        <div class="benefit-icon w-20 h-20 md:w-24 md:h-24 mx-auto rounded-3xl bg-ember/10 flex items-center justify-center mb-8">
-                            <!-- Sparkles icon (Wellness) -->
-                            <svg class="w-10 h-10 md:w-12 md:h-12 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-black text-2xl md:text-3xl mb-4">WELLNESS</h3>
-                        <p class="font-body text-ash dark:text-stone text-base md:text-lg leading-relaxed">
-                            Leave stress on the mats. Training is therapy—a healthy outlet that clears your head.
-                        </p>
-                    </div>
-
-                    <!-- Mindfulness -->
-                    <div class="text-center animate-on-scroll">
-                        <div class="benefit-icon w-20 h-20 md:w-24 md:h-24 mx-auto rounded-3xl bg-ember/10 flex items-center justify-center mb-8">
-                            <!-- Light bulb icon (Mindfulness) -->
-                            <svg class="w-10 h-10 md:w-12 md:h-12 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-black text-2xl md:text-3xl mb-4">MINDFULNESS</h3>
-                        <p class="font-body text-ash dark:text-stone text-base md:text-lg leading-relaxed">
-                            Moving meditation. When you're rolling, there's no room for anything but the present moment.
-                        </p>
-                    </div>
-
-                    <!-- Discipline -->
-                    <div class="text-center animate-on-scroll">
-                        <div class="benefit-icon w-20 h-20 md:w-24 md:h-24 mx-auto rounded-3xl bg-ember/10 flex items-center justify-center mb-8">
-                            <!-- Chart bar icon (Discipline) -->
-                            <svg class="w-10 h-10 md:w-12 md:h-12 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-black text-2xl md:text-3xl mb-4">DISCIPLINE</h3>
-                        <p class="font-body text-ash dark:text-stone text-base md:text-lg leading-relaxed">
-                            Structured growth. The belt system gives you clear goals and celebrates your progress.
-                        </p>
-                    </div>
-
-                    <!-- Community -->
-                    <div class="text-center animate-on-scroll">
-                        <div class="benefit-icon w-20 h-20 md:w-24 md:h-24 mx-auto rounded-3xl bg-ember/10 flex items-center justify-center mb-8">
-                            <!-- User group icon (Community) -->
-                            <svg class="w-10 h-10 md:w-12 md:h-12 text-ember" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="font-display font-black text-2xl md:text-3xl mb-4">COMMUNITY</h3>
-                        <p class="font-body text-ash dark:text-stone text-base md:text-lg leading-relaxed">
-                            Your second family. Train with people who become lifelong friends and training partners.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             SECTION 5: MEET THE TEAM
-             ═══════════════════════════════════════════════════════════ -->
-
-        <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-ink/5 dark:bg-white/[0.02]">
-
-            <!-- Ambient glow -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <div class="absolute top-0 right-1/3 w-[500px] h-[500px] bg-ember/10 dark:bg-ember/5 rounded-full blur-[120px]"></div>
-            </div>
-
-            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
-                <!-- Section Header -->
-                <div class="text-center mb-16 md:mb-20 animate-on-scroll">
-                    <p class="font-display font-semibold text-xs tracking-[0.3em] uppercase text-ember mb-4">
-                        Your Guides
-                    </p>
-                    <h2 class="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tight">
-                        MEET YOUR<br>
-                        <span class="text-ember">COACHES</span>
-                    </h2>
-                </div>
-
-                <!-- Coach Cards Grid -->
-                <div class="grid md:grid-cols-3 gap-8 lg:gap-10 stagger-children">
-
-                    <!-- Daan Francis - Head Coach -->
-                    <div class="glass-card tilt-card rounded-3xl overflow-hidden group animate-on-scroll">
-                        <!-- Photo placeholder -->
-                        <div class="aspect-[3/4] bg-gradient-to-br from-charcoal to-ink dark:from-stone/50 dark:to-paper/30 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1583473848882-f9a5bc7fd2ee?w=600&q=80"
-                                 alt="Daan Francis - Head Coach"
-                                 class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                            <!-- Gradient overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
-                            <!-- Name overlay -->
-                            <div class="absolute bottom-0 left-0 right-0 p-6">
-                                <p class="font-display font-black text-2xl md:text-3xl text-paper mb-1">DAAN FRANCIS</p>
-                                <p class="font-display font-semibold text-sm text-ember tracking-wide">HEAD COACH & FOUNDER</p>
-                            </div>
-                        </div>
-                        <!-- Bio -->
-                        <div class="p-6">
-                            <p class="font-body text-ash dark:text-stone text-sm leading-relaxed">
-                                10+ years of experience teaching BJJ. Daan built FJJ on the belief that everyone deserves a welcoming place to learn—no egos, no shortcuts, just honest growth.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Women's Coach -->
-                    <div class="glass-card tilt-card rounded-3xl overflow-hidden group animate-on-scroll">
-                        <!-- Photo placeholder -->
-                        <div class="aspect-[3/4] bg-gradient-to-br from-charcoal to-ink dark:from-stone/50 dark:to-paper/30 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80"
-                                 alt="Women's BJJ Coach"
-                                 class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                            <!-- Gradient overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
-                            <!-- Name overlay -->
-                            <div class="absolute bottom-0 left-0 right-0 p-6">
-                                <p class="font-display font-black text-2xl md:text-3xl text-paper mb-1">WOMEN'S BJJ</p>
-                                <p class="font-display font-semibold text-sm text-ember tracking-wide">COACH & MENTOR</p>
-                            </div>
-                        </div>
-                        <!-- Bio -->
-                        <div class="p-6">
-                            <p class="font-body text-ash dark:text-stone text-sm leading-relaxed">
-                                Creating a supportive environment where women can train, compete, and build confidence. Competitor and mentor dedicated to growing women's BJJ in Perth.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Kids Coach -->
-                    <div class="glass-card tilt-card rounded-3xl overflow-hidden group animate-on-scroll">
-                        <!-- Photo placeholder -->
-                        <div class="aspect-[3/4] bg-gradient-to-br from-charcoal to-ink dark:from-stone/50 dark:to-paper/30 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&q=80"
-                                 alt="Kids BJJ Coach"
-                                 class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                            <!-- Gradient overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
-                            <!-- Name overlay -->
-                            <div class="absolute bottom-0 left-0 right-0 p-6">
-                                <p class="font-display font-black text-2xl md:text-3xl text-paper mb-1">JUNIORS</p>
-                                <p class="font-display font-semibold text-sm text-ember tracking-wide">KIDS PROGRAM COACH</p>
-                            </div>
-                        </div>
-                        <!-- Bio -->
-                        <div class="p-6">
-                            <p class="font-body text-ash dark:text-stone text-sm leading-relaxed">
-                                Making BJJ fun and engaging for kids aged 3-15. Building discipline, coordination, and confidence through playful training that keeps them coming back.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- About CTA -->
-                <div class="text-center mt-12 md:mt-16">
-                    <a href="about.html"
-                       class="inline-flex items-center gap-2 font-display font-semibold text-ember hover:text-ember-glow transition-colors">
-                        Learn more about our story
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             SECTION 6: TESTIMONIALS
-             ═══════════════════════════════════════════════════════════ -->
-
-        <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden">
-
-            <!-- Ambient glow -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <div class="absolute top-1/3 left-1/2 w-[700px] h-[700px] bg-ember/10 dark:bg-ember/5 rounded-full blur-[150px] -translate-x-1/2"></div>
-            </div>
-
-            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
-                <!-- Section Header -->
-                <div class="text-center mb-16 md:mb-20 animate-on-scroll">
-                    <p class="font-display font-semibold text-xs tracking-[0.3em] uppercase text-ember mb-4">
-                        From Our Community
-                    </p>
-                    <h2 class="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tight">
-                        WHAT MEMBERS<br>
-                        <span class="text-ember">SAY</span>
-                    </h2>
-                </div>
-
-                <!-- Testimonials Grid -->
-                <div class="grid md:grid-cols-3 gap-6 lg:gap-8 stagger-children">
-
-                    <!-- Testimonial 1 -->
-                    <div class="glass-card rounded-3xl p-8 relative animate-on-scroll">
-                        <!-- Quote icon -->
-                        <div class="absolute top-6 right-6 text-ember/20">
-                            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                        </div>
-                        <!-- Quote -->
-                        <blockquote class="font-body text-lg leading-relaxed mb-6">
-                            "FJJ has been transformative. The stress relief and mental clarity I get from training here is incredible. It's become my therapy."
-                        </blockquote>
-                        <!-- Author -->
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-ember/20 flex items-center justify-center">
-                                <span class="font-display font-bold text-ember">NG</span>
-                            </div>
-                            <div>
-                                <p class="font-display font-bold">Nic G.</p>
-                                <p class="font-body text-sm text-ash">Member since 2023</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 2 -->
-                    <div class="glass-card rounded-3xl p-8 relative animate-on-scroll">
-                        <!-- Quote icon -->
-                        <div class="absolute top-6 right-6 text-ember/20">
-                            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                        </div>
-                        <!-- Quote -->
-                        <blockquote class="font-body text-lg leading-relaxed mb-6">
-                            "I was nervous to start but everyone here is so welcoming. My daughter loves the kids' classes—she's gained so much confidence."
-                        </blockquote>
-                        <!-- Author -->
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-ember/20 flex items-center justify-center">
-                                <span class="font-display font-bold text-ember">SM</span>
-                            </div>
-                            <div>
-                                <p class="font-display font-bold">Sarah M.</p>
-                                <p class="font-body text-sm text-ash">Parent & Member</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 3 -->
-                    <div class="glass-card rounded-3xl p-8 relative animate-on-scroll">
-                        <!-- Quote icon -->
-                        <div class="absolute top-6 right-6 text-ember/20">
-                            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                            </svg>
-                        </div>
-                        <!-- Quote -->
-                        <blockquote class="font-body text-lg leading-relaxed mb-6">
-                            "Best decision I ever made. Lost 15kg, made lifelong friends, and finally found a workout I actually look forward to."
-                        </blockquote>
-                        <!-- Author -->
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-ember/20 flex items-center justify-center">
-                                <span class="font-display font-bold text-ember">JT</span>
-                            </div>
-                            <div>
-                                <p class="font-display font-bold">James T.</p>
-                                <p class="font-body text-sm text-ash">Member since 2022</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             SECTION 7: FAQ PREVIEW
-             ═══════════════════════════════════════════════════════════ -->
-
-        <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-ink/5 dark:bg-white/[0.02]">
-
-            <!-- Ambient glow -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-ember/10 dark:bg-ember/5 rounded-full blur-[100px] translate-x-1/4"></div>
-            </div>
-
-            <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
-
-                <!-- Section Header -->
-                <div class="text-center mb-12 md:mb-16 animate-on-scroll">
-                    <p class="font-display font-semibold text-xs tracking-[0.3em] uppercase text-ember mb-4">
-                        Questions Answered
-                    </p>
-                    <h2 class="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tight">
-                        COMMON<br>
-                        <span class="text-ember">QUESTIONS</span>
-                    </h2>
-                </div>
-
-                <!-- FAQ Accordions -->
-                <div class="space-y-4 animate-on-scroll" id="faq-accordions">
-
-                    <!-- FAQ 1 -->
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" aria-expanded="false">
-                            <span class="font-display font-bold text-base md:text-lg pr-4">Do I need any experience to start?</span>
-                            <svg class="faq-icon w-6 h-6 text-ember flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="font-body text-ash dark:text-stone leading-relaxed">
-                                Absolutely not. Most of our members started with zero experience. We teach you everything from scratch—how to move, fall safely, and build from there. Your first class is free, so come try it out with no pressure.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 2 -->
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" aria-expanded="false">
-                            <span class="font-display font-bold text-base md:text-lg pr-4">What should I wear to my first class?</span>
-                            <svg class="faq-icon w-6 h-6 text-ember flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="font-body text-ash dark:text-stone leading-relaxed">
-                                Comfortable athletic wear works great—shorts/leggings and a t-shirt. We have loaner gis (the traditional uniform) if you want to try a gi class. Just avoid anything with zippers or pockets that could catch fingers.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 3 -->
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" aria-expanded="false">
-                            <span class="font-display font-bold text-base md:text-lg pr-4">How often should I train?</span>
-                            <svg class="faq-icon w-6 h-6 text-ember flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="font-body text-ash dark:text-stone leading-relaxed">
-                                For beginners, 2-3 times per week is the sweet spot. Enough to build skills and see progress, but still allowing your body to recover. Once you're hooked (and you will be), many members train 4-5 times per week.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 4 -->
-                    <div class="glass-card rounded-2xl overflow-hidden">
-                        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" aria-expanded="false">
-                            <span class="font-display font-bold text-base md:text-lg pr-4">Is BJJ safe? Will I get hurt?</span>
-                            <svg class="faq-icon w-6 h-6 text-ember flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="font-body text-ash dark:text-stone leading-relaxed">
-                                BJJ is one of the safest martial arts to train. There's no striking, and the tap system means you can stop any submission before it causes injury. We prioritise safety, and more experienced partners always look out for beginners.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- View All FAQ CTA -->
-                <div class="text-center mt-10">
-                    <a href="faq.html"
-                       class="inline-flex items-center gap-2 font-display font-semibold text-ember hover:text-ember-glow transition-colors">
-                        View all FAQs
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             SECTION 8: FINAL CTA
-             ═══════════════════════════════════════════════════════════ -->
-
-        <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-gradient-to-br from-ember to-ember-dark">
-
-            <!-- Aurora Background (Aceternity-inspired) -->
-            <div class="aurora-bg"></div>
-
-            <!-- Texture overlay -->
-            <div class="absolute inset-0 texture-overlay"></div>
-
-            <!-- Ambient glow -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white/10 rounded-full blur-[120px]"></div>
-                <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-black/10 rounded-full blur-[100px]"></div>
-            </div>
-
-            <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center animate-on-scroll">
-
-                <h2 class="font-display font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[0.85] tracking-tight text-white mb-6">
-                    READY TO START<br>
-                    YOUR JOURNEY?
-                </h2>
-
-                <p class="font-body text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10">
-                    Your first class is free. No commitment. No pressure. Just show up, give it a try, and see why BJJ changes lives.
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://tidycal.com/fjj" target="_blank" rel="noopener"
-                       class="inline-flex items-center gap-3 bg-white text-ember hover:bg-paper font-display font-bold text-lg px-8 py-4 rounded-2xl transition-all hover:scale-[1.02] hover:shadow-xl">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-                        </svg>
-                        BOOK FREE TRIAL
-                    </a>
-                    <a href="contact.html"
-                       class="inline-flex items-center gap-2 font-display font-semibold text-lg text-white px-6 py-4 rounded-2xl border-2 border-white/30 hover:bg-white/10 transition-all">
-                        CONTACT US
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════════
-             FOOTER
-             ═══════════════════════════════════════════════════════════ -->
-
-        <footer class="relative bg-ink dark:bg-charcoal py-16 md:py-20">
-
-            <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-                <div class="grid md:grid-cols-4 gap-12 md:gap-8 mb-12">
-
-                    <!-- Logo & Tagline -->
-                    <div class="md:col-span-1">
-                        <img src="assets/fjj-logo-white.png" alt="Francis Jiu Jitsu" class="h-12 mb-4">
-                        <p class="font-body text-stone text-sm leading-relaxed">
-                            Perth's most welcoming BJJ academy. All ages. All levels. Zero egos.
-                        </p>
-                    </div>
-
-                    <!-- Quick Links -->
-                    <div>
-                        <h4 class="font-display font-bold text-paper mb-4">Quick Links</h4>
-                        <ul class="space-y-3">
-                            <li><a href="classes.html" class="font-body text-stone hover:text-ember transition-colors">Classes</a></li>
-                            <li><a href="schedule.html" class="font-body text-stone hover:text-ember transition-colors">Schedule</a></li>
-                            <li><a href="about.html" class="font-body text-stone hover:text-ember transition-colors">About</a></li>
-                            <li><a href="faq.html" class="font-body text-stone hover:text-ember transition-colors">FAQ</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Contact -->
-                    <div>
-                        <h4 class="font-display font-bold text-paper mb-4">Contact</h4>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg class="w-5 h-5 text-ember mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                                </svg>
-                                <span class="font-body text-stone text-sm">Leeming, Perth WA</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg class="w-5 h-5 text-ember mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                                </svg>
-                                <a href="mailto:info@francisjiujitsu.com.au" class="font-body text-stone text-sm hover:text-ember transition-colors">info@francisjiujitsu.com.au</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Social -->
-                    <div>
-                        <h4 class="font-display font-bold text-paper mb-4">Follow Us</h4>
-                        <div class="flex gap-4">
-                            <!-- Instagram -->
-                            <a href="https://www.instagram.com/francisjiujitsu/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-ember flex items-center justify-center transition-colors" aria-label="Instagram">
-                                <svg class="w-5 h-5 text-paper" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                            </a>
-                            <!-- Facebook -->
-                            <a href="https://www.facebook.com/francisjiujitsu/" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-ember flex items-center justify-center transition-colors" aria-label="Facebook">
-                                <svg class="w-5 h-5 text-paper" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Bottom Bar -->
-                <div class="pt-8 border-t border-white/10">
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                        <p class="font-body text-stone text-sm">
-                            © 2026 Francis Jiu Jitsu. All rights reserved.
-                        </p>
-                        <div class="flex items-center gap-6">
-                            <a href="#" class="font-body text-stone text-sm hover:text-ember transition-colors">Privacy Policy</a>
-                            <a href="#" class="font-body text-stone text-sm hover:text-ember transition-colors">Terms of Service</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </footer>
-
+        </div>
     </div>
+</footer>
 
-    <!-- ═══════════════════════════════════════════════════════════
-         SCRIPTS
-         ═══════════════════════════════════════════════════════════ -->
+<!-- ============================================ -->
+<!-- JAVASCRIPT -->
+<!-- ============================================ -->
+<script>
+// ---- Schedule Data ----
+const schedule = {
+    Monday: [
+        { time: '3:45 – 4:30 PM', name: 'J1 No-Gi', tag: 'Ages 3-7' },
+        { time: '4:30 – 5:15 PM', name: 'J2 No-Gi', tag: 'Ages 8-15' },
+        { time: '5:30 – 6:30 PM', name: 'No-Gi', tag: 'All Levels' },
+        { time: '6:30 – 7:30 PM', name: 'Gi BJJ', tag: 'All Levels' },
+        { time: '6:30 – 7:30 PM', name: "Women's Wrestling", tag: 'Women Only' },
+        { time: '7:30 – 8:30 PM', name: 'Judo', tag: 'Teens & Adults' },
+    ],
+    Tuesday: [
+        { time: '3:45 – 4:30 PM', name: 'J1', tag: 'Ages 3-7' },
+        { time: '4:30 – 5:15 PM', name: 'J2', tag: 'Ages 8-15' },
+        { time: '5:30 – 6:30 PM', name: 'No-Gi', tag: 'All Levels' },
+        { time: '6:30 – 8:00 PM', name: 'Gi Advanced', tag: 'Advanced' },
+    ],
+    Wednesday: [
+        { time: '3:45 – 4:30 PM', name: 'J1', tag: 'Ages 3-7' },
+        { time: '4:30 – 5:15 PM', name: 'J2', tag: 'Ages 8-15' },
+        { time: '5:30 – 6:30 PM', name: 'No-Gi', tag: 'All Levels' },
+        { time: '6:30 – 7:30 PM', name: 'Gi BJJ', tag: 'All Levels' },
+    ],
+    Thursday: [
+        { time: '3:45 – 4:30 PM', name: 'J1', tag: 'Ages 3-7' },
+        { time: '4:30 – 5:15 PM', name: 'J2', tag: 'Ages 8-15' },
+        { time: '5:30 – 6:30 PM', name: 'No-Gi', tag: 'All Levels' },
+        { time: '6:30 – 8:00 PM', name: 'Gi Advanced', tag: 'Advanced' },
+    ],
+    Friday: [
+        { time: '5:30 – 6:30 PM', name: 'Open Mat', tag: 'All Levels' },
+        { time: '5:30 – 6:30 PM', name: 'Boxing', tag: 'All Levels' },
+    ],
+    Saturday: [
+        { time: '9:25 – 10:00 AM', name: 'J1 + J2 No-Gi', tag: 'Ages 3-15' },
+        { time: '10:00 – 11:30 AM', name: 'Open Mat', tag: 'All Levels' },
+    ],
+    Sunday: [
+        { time: '9:00 – 11:00 AM', name: 'Open Mat', tag: 'All Levels' },
+    ],
+};
 
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        const body = document.body;
+// ---- Schedule Rendering ----
+const days = Object.keys(schedule);
+const tabsContainer = document.getElementById('scheduleTabs');
+const contentContainer = document.getElementById('scheduleContent');
 
-        // Check for saved theme or default to light
-        const savedTheme = localStorage.getItem('fjj-theme') || 'light';
-        setTheme(savedTheme);
+function getToday() {
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return dayNames[new Date().getDay()];
+}
 
-        function setTheme(theme) {
-            if (theme === 'dark') {
-                body.classList.add('dark');
-                body.classList.remove('light');
-            } else {
-                body.classList.remove('dark');
-                body.classList.add('light');
-            }
-            localStorage.setItem('fjj-theme', theme);
+function renderTabs(activeDay) {
+    tabsContainer.innerHTML = days.map(day =>
+        `<button class="schedule-tab font-space font-medium text-sm px-5 py-2.5 rounded-full transition ${day === activeDay ? 'active' : 'bg-mist text-ash hover:text-ink'}" onclick="selectDay('${day}')">${day.slice(0, 3)}</button>`
+    ).join('');
+}
+
+function renderSchedule(day) {
+    const classes = schedule[day];
+    contentContainer.innerHTML = `
+        <div class="space-y-0">
+            ${classes.map(c => `
+                <div class="flex items-center justify-between py-5 border-b border-ink/10">
+                    <div class="flex items-center gap-4 lg:gap-8">
+                        <span class="font-space text-ash text-sm w-32 lg:w-40 flex-shrink-0">${c.time}</span>
+                        <span class="font-clash font-bold text-ink text-base">${c.name}</span>
+                    </div>
+                    <span class="text-xs font-space font-medium px-3 py-1 rounded-full ${c.tag === 'Advanced' ? 'bg-ink text-paper' : c.tag === 'Women Only' ? 'bg-ember/15 text-ember' : 'bg-ink/5 text-ash'}">${c.tag}</span>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function selectDay(day) {
+    renderTabs(day);
+    renderSchedule(day);
+}
+
+// Init schedule with today
+selectDay(getToday());
+
+// ---- Nav Scroll ----
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
+});
+
+// ---- Mobile Menu ----
+const mobileMenu = document.getElementById('mobileMenu');
+document.getElementById('menuBtn').addEventListener('click', () => mobileMenu.classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click', () => mobileMenu.classList.remove('open'));
+document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+// ---- FAQ Accordion ----
+function toggleFaq(item) {
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-answer').classList.remove('open');
+    });
+
+    // Open clicked (if wasn't already open)
+    if (!isOpen) {
+        item.classList.add('open');
+        answer.classList.add('open');
+    }
+}
+
+// ---- Touch Device Detection ----
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if (isTouchDevice) document.documentElement.classList.add('touch-device');
+
+// ---- Scroll Reveal ----
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
         }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
 
-        themeToggle.addEventListener('click', () => {
-            const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
-            setTheme(newTheme);
-        });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        const mobileMenu = document.getElementById('mobile-menu');
+// ---- Image Reveal Observer ----
+const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            imageObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.2 });
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
+document.querySelectorAll('.image-reveal').forEach(el => imageObserver.observe(el));
 
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-
-        // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // FAQ Accordions
-        document.querySelectorAll('.faq-toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const content = toggle.nextElementSibling;
-                const icon = toggle.querySelector('.faq-icon');
-                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-
-                // Toggle current
-                toggle.setAttribute('aria-expanded', !isExpanded);
-                content.classList.toggle('hidden');
-                icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(45deg)';
-            });
-        });
-
-        // Scroll Animations with IntersectionObserver
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -100px 0px',
-            threshold: 0.1
+// ---- Glare Card Mouse Tracking (60fps throttled) ----
+if (!isTouchDevice) {
+    function throttle(fn, wait = 16) {
+        let last = 0;
+        return function(...args) {
+            const now = Date.now();
+            if (now - last >= wait) { last = now; fn.apply(this, args); }
         };
+    }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Only animate once
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements with animate-on-scroll class
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
+    document.querySelectorAll('.glare-card').forEach(card => {
+        const handleGlare = throttle((e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--glare-x', `${x}%`);
+            card.style.setProperty('--glare-y', `${y}%`);
         });
-
-        // ═══════════════════════════════════════════════════════════
-        // PREMIUM ACETERNITY UI EFFECTS - Optimized JavaScript
-        // ═══════════════════════════════════════════════════════════
-
-        // --- PERFORMANCE: THROTTLE FUNCTION ---
-        // Limits function calls to 60fps (16ms) for smooth animations
-        function throttle(fn, wait = 16) {
-            let lastTime = 0;
-            return function(...args) {
-                const now = Date.now();
-                if (now - lastTime >= wait) {
-                    lastTime = now;
-                    fn.apply(this, args);
-                }
-            };
-        }
-
-        // --- TOUCH DEVICE DETECTION ---
-        // Disables hover-based effects on touch devices
-        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-        if (isTouchDevice) {
-            document.body.classList.add('touch-device');
-        }
-
-        // --- GLARE CARD EFFECT (THROTTLED) ---
-        // Tracks mouse position with 60fps throttling
-        if (!isTouchDevice) {
-            document.querySelectorAll('.glare-card').forEach(card => {
-                const handleGlare = throttle((e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = ((e.clientX - rect.left) / rect.width) * 100;
-                    const y = ((e.clientY - rect.top) / rect.height) * 100;
-                    card.style.setProperty('--glare-x', `${x}%`);
-                    card.style.setProperty('--glare-y', `${y}%`);
-                }, 16);
-
-                card.addEventListener('mousemove', handleGlare);
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.setProperty('--glare-x', '50%');
-                    card.style.setProperty('--glare-y', '50%');
-                });
-            });
-        }
-
-        // --- 3D TILT CARD EFFECT (THROTTLED) ---
-        // Creates perspective tilt with 60fps throttling
-        if (!isTouchDevice) {
-            document.querySelectorAll('.tilt-card').forEach(card => {
-                const handleTilt = throttle((e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = (e.clientX - rect.left - rect.width / 2) / 15;
-                    const y = (e.clientY - rect.top - rect.height / 2) / 15;
-                    card.style.setProperty('--tilt-x', `${x}deg`);
-                    card.style.setProperty('--tilt-y', `${-y}deg`);
-                }, 16);
-
-                card.addEventListener('mousemove', handleTilt);
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.setProperty('--tilt-x', '0deg');
-                    card.style.setProperty('--tilt-y', '0deg');
-                });
-            });
-        }
-
-        // --- TEXT GENERATE EFFECT ---
-        // Stagger animation delay for each word
-        document.querySelectorAll('.text-generate').forEach(container => {
-            const spans = container.querySelectorAll('span:not(.flip-words)');
-            spans.forEach((span, index) => {
-                span.style.animationDelay = `${0.8 + index * 0.08}s`;
-            });
+        card.addEventListener('mousemove', handleGlare);
+        card.addEventListener('mouseleave', () => {
+            card.style.setProperty('--glare-x', '50%');
+            card.style.setProperty('--glare-y', '50%');
         });
+    });
+}
 
-        // --- FLIP WORDS EFFECT ---
-        // Cycles through words with flip animation
-        const flipWordsElements = document.querySelectorAll('.flip-words');
-        flipWordsElements.forEach(el => {
-            const words = JSON.parse(el.dataset.words || '[]');
-            if (words.length === 0) return;
-
-            let currentIndex = 0;
-            el.textContent = words[currentIndex];
-
-            // Initial animation
-            el.style.animationDelay = '1.2s';
-            el.classList.add('flip-in');
-
-            setInterval(() => {
-                // Flip out
-                el.classList.remove('flip-in');
-                el.classList.add('flip-out');
-
-                setTimeout(() => {
-                    // Change word
-                    currentIndex = (currentIndex + 1) % words.length;
-                    el.textContent = words[currentIndex];
-
-                    // Flip in
-                    el.classList.remove('flip-out');
-                    el.classList.add('flip-in');
-                }, 300);
-            }, 3000);
-        });
-
-        // --- PREMIUM: PAUSE FLIP WORDS ON HOVER ---
-        // Allows users to read the current word
-        flipWordsElements.forEach(el => {
-            let isPaused = false;
-            el.addEventListener('mouseenter', () => isPaused = true);
-            el.addEventListener('mouseleave', () => isPaused = false);
-        });
-
-        // ═══════════════════════════════════════════════════════════
-        // PREMIUM ENHANCEMENTS (v5 Upgrade)
-        // ═══════════════════════════════════════════════════════════
-
-        // --- ANIMATED NUMBER COUNTER ---
-        function animateCounter(el, target, duration = 2000) {
-            const start = 0;
-            const startTime = performance.now();
-
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-                const current = Math.floor(start + (target - start) * eased);
-                el.textContent = current + '+';
-                if (progress < 1) requestAnimationFrame(update);
-            }
-            requestAnimationFrame(update);
+// ---- Smooth scroll offset for fixed nav ----
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+            const offset = 80;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
         }
+    });
+});
+</script>
 
-        // Trigger counters on page load
-        document.querySelectorAll('.counter-value').forEach(el => {
-            const target = parseInt(el.dataset.target) || 0;
-            // Small delay for visual effect
-            setTimeout(() => animateCounter(el, target, 2000), 800);
-        });
-
-        // --- PARALLAX DOT BACKGROUND ---
-        const dotBg = document.querySelector('.dot-background');
-        if (dotBg && !isTouchDevice) {
-            window.addEventListener('scroll', throttle(() => {
-                const scrollY = window.scrollY;
-                if (scrollY < window.innerHeight) {
-                    dotBg.style.transform = `translateY(${scrollY * 0.15}px)`;
-                }
-            }, 16));
-        }
-
-        // --- IMAGE REVEAL OBSERVER ---
-        document.querySelectorAll('.image-reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        console.log('✨ Premium Aceternity effects loaded');
-        console.log(`📱 Touch device: ${isTouchDevice ? 'Yes' : 'No'}`);
-    </script>
 </body>
 </html>
